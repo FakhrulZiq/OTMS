@@ -35,6 +35,13 @@
 						Log In
 					</span>
 
+					<!-- Add the error message display -->
+					@if ($errors->any())
+						<div class="alert alert-danger">
+							{{ $errors->first() }}
+						</div>
+					@endif
+					
                     <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
 						<input class="input100" type="email" name="email" placeholder="Email">
 						<span class="focus-input100"></span>
