@@ -79,7 +79,7 @@ class UserController extends Controller
             $userType = auth()->user()->type;
 
             if ($userType === 'Teacher') {
-                return redirect('/teachers/list')->with('success', 'You are already logged in!');
+                return redirect('/students/learning-progress-list')->with('success', 'You are already logged in!');
             } elseif ($userType === 'Headmaster') {
                 return redirect('/students/list')->with('success', 'You are already logged in!');
             } elseif ($userType === 'Parent') {
@@ -88,7 +88,7 @@ class UserController extends Controller
 
                 return redirect()->route('students.approval', ['student' => $student])->with('success', 'You are already logged in!');
             } elseif ($userType === 'Staff') {
-                return redirect('/staffs/list')->with('success', 'You are already logged in!');
+                return redirect('/students/approval')->with('success', 'You are already logged in!');
             }
         }
 

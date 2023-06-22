@@ -210,7 +210,7 @@ class StudentController extends Controller
 
     //show all student status
     public function approval(Request $request) {
-        if (!in_array(Auth::user()->type, ['Headmaster', 'Clerk'])) {
+        if (!in_array(Auth::user()->type, ['Headmaster', 'Staff'])) {
             abort(403, 'Unauthorized');
         }        
         
