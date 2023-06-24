@@ -27,10 +27,6 @@
                 <input type="text" placeholder="Search...">
                 <span class="tooltip">Search</span>
             </li>
-            {{-- <li>
-                <a href="#"><i class='bx bx-grid-alt'></i><span class="links_name">Dashboard</span></a>
-                <span class="tooltip">Dashboard</span>
-            </li> --}}
             @auth
                 @if(auth()->user()->type === 'Teacher')
                     <li>
@@ -41,18 +37,6 @@
                         <a href="/students/learning-progress-list"><i class='bx bx-line-chart'></i><span class="links_name">Learning Progress</span></a>
                         <span class="tooltip">Learning Progress</span>
                     </li>
-                    {{-- <li>
-                        <a href="#"><i class='bx bx-folder'></i><span class="links_name">File Manager</span></a>
-                        <span class="tooltip">Files</span>
-                    </li> --}}
-                    {{-- <li>
-                        <a href="#"><i class='bx bx-cart-alt'></i><span class="links_name">Order</span></a>
-                        <span class="tooltip">Order</span>
-                    </li> --}}
-                    {{-- <li>
-                        <a href="#"><i class='bx bx-heart'></i><span class="links_name">Saved</span></a>
-                        <span class="tooltip">Saved</span>
-                    </li> --}}
                     <li class="profile">
                         @auth
                             @if(auth()->user()->teacher()->exists())
@@ -195,6 +179,10 @@
                         </form>
                     </li>                                                                    
                 @elseif(auth()->user()->type === 'Staff')
+                    <li>
+                        <a href="/students/list"><i class='bx bxs-graduation'></i><span class="links_name">Manage Students</span></a>
+                        <span class="tooltip">Manage Students</span>
+                    </li>
                     <li>
                         <a href="/students/approval"><i class='bx bx-select-multiple'></i><span class="links_name">Approval Application</span></a>
                         <span class="tooltip">Approval Application</span>

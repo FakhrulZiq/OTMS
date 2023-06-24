@@ -180,3 +180,134 @@
 	color: #a75d54;
 }
 
+.panel-default {
+	border-color: #ddd;
+	border-radius: 10px;
+  }
+  
+  .panel-body {
+	padding: 10px;
+	margin-left: 20px;
+	margin-right: 20px;
+  }
+  
+  .statistic-icon {
+	text-align: right;
+	margin-top: auto;
+	margin-bottom: auto;
+  }
+  
+  .icon.icon-shape {
+	width: 80px;
+	height: 80px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+	background-color: #dc3545;
+	color: #fff;
+	position: relative;
+	float: right;
+	margin-right: 30px;
+	margin-top: 20px;
+  }
+  
+  .icon.icon-shape i {
+	font-size: 40px;
+  }
+
+  /* View All button */
+.view-all-btn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-decoration: none;
+	color: #fff;
+	background-color: #007bff;
+	padding: 8px 15px;
+	border-radius: 20px;
+	transition: background-color 0.3s;
+	margin-top: 20px;
+  }
+  
+  .view-all-btn:hover {
+	background-color: #0056b3;
+	color: #fff;
+	text-decoration: none;
+  }
+  
+  .view-all-btn span {
+	margin-right: 5px;
+  }
+  
+  /* Arrow icon */
+  .view-all-btn i {
+	margin-left: 5px;
+  }
+  
+  /* Statistic number animation */
+  @keyframes numberAnimation {
+	from {
+	  opacity: 0;
+	  transform: translateY(20px);
+	}
+	to {
+	  opacity: 1;
+	  transform: translateY(0);
+	}
+  }
+  
+  .statistic-number {
+	font-size: 36px;
+	font-weight: bold;
+	margin-top: 20px;
+	animation: numberAnimation 1s ease-out;
+  }
+/* View All button */
+.view-all-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #fff;
+  background-color: #007bff;
+  padding: 8px 15px;
+  border-radius: 20px;
+  transition: background-color 0.3s;
+  margin-top: 20px;
+}
+
+.view-all-btn:hover {
+  background-color: #0056b3;
+  text-decoration: none;
+  color: #fff;
+}
+
+.view-all-btn span {
+  margin-right: 5px;
+}
+
+/* Arrow icon */
+.view-all-btn i {
+  margin-left: 5px;
+}
+
+/* Statistic number animation */
+@keyframes numberAnimation {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.statistic-number {
+  font-size: 36px;
+  font-weight: bold;
+  margin-top: 20px;
+  animation: numberAnimation 1s ease-out;
+}
+  

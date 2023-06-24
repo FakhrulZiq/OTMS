@@ -154,7 +154,7 @@
                                     <tbody id="myTableApproved">  
                                         <tr>
                                             <td>
-                                                <img src="{{$student->ProfileImage ? asset('/storage/profileImages/' .$student->ProfileImage) : asset('/images/no-image.jpg')}}" >
+                                                <img src="{{$student->ProfileImage ? asset('/profileImages/' .$student->ProfileImage) : asset('/images/no-image.jpg')}}" >
                                                 <a href="/students/{{$student['id']}}" class="user-link">{{$student['FullName']}}</a><span class="user-subhead">Student</span>
                                             </td>
                                             <td>{{$student->DOB}}</td>
@@ -228,7 +228,7 @@
                                     <tbody id="myTableRejected">  
                                         <tr>
                                             <td>
-                                                <img src="{{$student->ProfileImage ? asset('/storage/profileImages/' .$student->ProfileImage) : asset('/images/no-image.jpg')}}" >
+                                                <img src="{{$student->ProfileImage ? asset('/profileImages/' .$student->ProfileImage) : asset('/images/no-image.jpg')}}" >
                                                 <a href="/students/{{$student['id']}}" class="user-link">{{$student['FullName']}}</a><span class="user-subhead">Student</span>
                                             </td>
                                             <td>{{$student->DOB}}</td>

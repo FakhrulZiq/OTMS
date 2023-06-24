@@ -123,7 +123,7 @@ select {
 
 </style>
 </head>
-<h4 style="margin-left: 10%"><a href="/students/learning-progress-list"><i class="fa fa-angle-double-left" style="font-size:25px;"></i> Back</a></h4>
+<h4 style="margin-left: 10%"><a href="{{ url()->previous() }}"><i class="fa fa-angle-double-left" style="font-size:25px;"></i> Back</a></h4>
 <h2 style="margin-left: 10%">Student Learning Progress</h2>
 
 <div class="containers">

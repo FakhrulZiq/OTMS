@@ -25,9 +25,9 @@
 <div class="container bootstrap snippet">
     
     <div class="row">
-        <h4><a href="/students/list"><i class="fa fa-angle-double-left" style="font-size:25px;"></i> Back</a></h4>
+        <h4><a href="{{ url()->previous() }}"><i class="fa fa-angle-double-left" style="font-size:25px;"></i> Back</a></h4>
         <div class="col-sm-10"><h1>Student Profile</h1></div>
-    </div>
+    </div>    
     <div class="row">
         <!--left col-->
         <div class="col-sm-3">

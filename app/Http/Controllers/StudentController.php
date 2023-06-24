@@ -24,9 +24,9 @@ class StudentController extends Controller
     //show all student
     public function index()
     {
-        if (Auth::user()->type !== 'Headmaster') {
+        if (!in_array(Auth::user()->type, ['Headmaster', 'Staff', 'Teacher'])) {
             abort(403, 'Unauthorized');
-        }
+        }        
 
         return view('students.indexStudent', [
             'students' => Students::latest()->filter(request(['Status', 'search']))->paginate(10)
@@ -212,7 +212,7 @@ class StudentController extends Controller
     public function approval(Request $request) {
         if (!in_array(Auth::user()->type, ['Headmaster', 'Staff'])) {
             abort(403, 'Unauthorized');
-        }        
+        }         
         
         $searchQuery = $request->input('search');
     

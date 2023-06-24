@@ -16,6 +16,61 @@
         <div class="row"> 
             <div class="col-lg-12">
                 <div class="main-box clearfix">
+                    <!-- Statistic Cards -->
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="panel panel-default" style="background-color:#c8dcfc">
+                                <div class="statistic-icon">
+                                    <div class="icon icon-shape" style="background-color: #c5d300">
+                                        <i class='bx bx-user-pin'></i>
+                                    </div>
+                                </div>
+                                <div class="panel-body">
+                                    <h4>STAFF</h4>
+                                    <h2 class="statistic-number" data-number="120">0</h2>
+                                    <a href="#" class="view-all-btn">
+                                        <span>View All</span>
+                                        <i class="bx bx-right-arrow-alt"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="panel panel-default">
+                                <div class="statistic-icon">
+                                    <div class="icon icon-shape" style="background-color: #419a49">
+                                        <i class='bx bx-book-open' ></i>
+                                    </div>
+                                </div>
+                                <div class="panel-body">
+                                    <h4>TEACHER</h4>
+                                    <h2 class="statistic-number" data-number="10">0</h2>
+                                    <a href="#" class="view-all-btn">
+                                        <span>View All</span>
+                                        <i class="bx bx-right-arrow-alt"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="panel panel-default">
+                                <div class="statistic-icon">
+                                    <div class="icon icon-shape" style="background-color: #41609a">
+                                        <i class='bx bxs-graduation'></i>
+                                    </div>
+                                </div>
+                                <div class="panel-body">
+                                    <h4>STUDENT</h4>
+                                    <h2 class="statistic-number" data-number="320">0</h2>
+                                    <a href="#" class="view-all-btn">
+                                        <span>View All</span>
+                                        <i class="bx bx-right-arrow-alt"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Statistic Cards -->
                     <div class="table-responsive">
                         <div class="input-group">
                             <div class="input-group-btn search-panel">
@@ -62,7 +117,7 @@
                                     </td>
                                     <td>{{ date('d-m-Y', strtotime($staff->updated_at)) }}</td>
                                     <td class="text-center">
-                                        <h4>Staff</h4> 
+                                        Clerk
                                     </td>
                                     <td>
                                         <a href="#"><span class="__cf_email__" data-cfemail="660b0f0a07260d13080f154805090b">[email&#160;protected]</span></a>
@@ -129,7 +184,25 @@
             });
         });
     </script>
-        
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.statistic-number').each(function() {
+                var $this = $(this);
+                var number = parseInt($this.attr('data-number'));
+                $({ countNum: 0 }).animate({ countNum: number }, {
+                    duration: 2000,
+                    easing: 'linear',
+                    step: function() {
+                        $this.text(Math.floor(this.countNum));
+                    },
+                    complete: function() {
+                        $this.text(this.countNum);
+                    }
+                });
+            });
+        });
+    </script>
     {{-- @endunless --}}
 </main>
 @endsection

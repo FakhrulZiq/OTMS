@@ -12,7 +12,7 @@ class StaffController extends Controller
 {
     //show all staff
     public function index() {
-        if (Auth::user()->type !== 'Headmaster') {
+        if (!in_array(Auth::user()->type, ['Headmaster'])) {
             abort(403, 'Unauthorized');
         }
         $staffs = Staffs::latest()->paginate(10);
@@ -43,7 +43,7 @@ class StaffController extends Controller
     }
 
     public function update(Request $request, $id) {
-        if (Auth::user()->user_type !== 'headmaster') {
+        if (!in_array(Auth::user()->type, ['Headmaster'])) {
             abort(403, 'Unauthorized');
         }
 

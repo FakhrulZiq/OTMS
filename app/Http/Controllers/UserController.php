@@ -23,7 +23,7 @@ class UserController extends Controller
         $formFields = $request->validate([
             'FullName' => ['required', 'min:3'],
             'email' => ['required', 'email', Rule::unique('users', 'email')],
-            'password' => ['required', 'min:6']
+            'password' => ['required', 'min:8']
         ]);
     
         $fullName = $formFields['FullName'];
@@ -112,7 +112,7 @@ class UserController extends Controller
             $userType = $user->type;
         
             if ($userType === 'Teacher') {
-                return redirect('/teachers/list')->with('success', 'You are now logged in!');
+                return redirect('/students/learning-progress-list')->with('success', 'You are now logged in!');
             } elseif ($userType === 'Headmaster') {
                 return redirect('/students/list')->with('success', 'You are now logged in!');
             } elseif ($userType === 'Parent') {
@@ -121,7 +121,7 @@ class UserController extends Controller
         
                 return redirect()->route('students.approval', ['student' => $student])->with('success', 'You are now logged in!');
             } elseif ($userType === 'Staff') {
-                return redirect('/staffs/list')->with('success', 'You are now logged in!');
+                return redirect('/students/approval')->with('success', 'You are now logged in!');
             }
         }
 
