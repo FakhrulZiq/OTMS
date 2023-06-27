@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+      //1
       $user = User::factory()->create([
          'name' => 'IMRA',
          'email' => 'imra_admin@darulhuffaz.com',
@@ -22,6 +23,7 @@ class DatabaseSeeder extends Seeder
          'type' => 'Headmaster',
       ]);
 
+      //2
       $user = User::factory()->create([
          'name' => 'SYUKOR ',
          'email' => 'syukor_admin@darulhuffaz.com',
@@ -29,6 +31,7 @@ class DatabaseSeeder extends Seeder
          'type' => 'Headmaster',
      ]);
 
+     //3
       $user = User::factory()->create([
          'name' => 'AHMAD',
          'email' => 'ahmad@gmail.com',
@@ -36,6 +39,7 @@ class DatabaseSeeder extends Seeder
          'type' => 'Parent',
      ]);
 
+     //4
       $user = User::factory()->create([
          'name' => 'RAZAK',
          'email' => 'razak@gmail.com',
@@ -43,6 +47,7 @@ class DatabaseSeeder extends Seeder
          'type' => 'Parent',
       ]);
 
+      //5
       $user = User::factory()->create([
          'name' => 'ZAIN ',
          'email' => 'zain@gmail.com',
@@ -50,6 +55,7 @@ class DatabaseSeeder extends Seeder
          'type' => 'Parent',
      ]);
 
+     //6
       $user = User::factory()->create([
          'name' => 'DANISH',
          'email' => 'danish@gmail.com',
@@ -57,6 +63,7 @@ class DatabaseSeeder extends Seeder
          'type' => 'Parent',
       ]);
 
+      //7
       $user = User::factory()->create([
          'name' => 'AMIN',
          'email' => 'amin@gmail.com',
@@ -64,6 +71,7 @@ class DatabaseSeeder extends Seeder
          'type' => 'Parent',
      ]);
 
+     //8
       $user = User::factory()->create([
          'name' => 'SYAFIQ',
          'email' => 'syafiq@gmail.com',
@@ -71,6 +79,7 @@ class DatabaseSeeder extends Seeder
          'type' => 'Parent',
       ]);
 
+      //9
       $user = User::factory()->create([
          'name' => 'ISMAIL',
          'email' => 'ismail@gmail.com',
@@ -78,6 +87,7 @@ class DatabaseSeeder extends Seeder
          'type' => 'Parent',
      ]);
 
+     //10
       $user = User::factory()->create([
          'name' => 'HAFIZ',
          'email' => 'hafiz@gmail.com',
@@ -85,6 +95,7 @@ class DatabaseSeeder extends Seeder
          'type' => 'Parent',
       ]);
 
+      //11
       $user = User::factory()->create([
          'name' => 'RAZALI',
          'email' => 'razali@gmail.com',
@@ -92,6 +103,7 @@ class DatabaseSeeder extends Seeder
          'type' => 'Parent',
      ]);
 
+     //12
       $user = User::factory()->create([
          'name' => 'FIRDAUS',
          'email' => 'firdaus@gmail.com',
@@ -99,6 +111,7 @@ class DatabaseSeeder extends Seeder
          'type' => 'Parent',
       ]);
 
+      //13
       $user = User::factory()->create([
          'name' => 'AMIR',
          'email' => 'amir@gmail.com',
@@ -106,6 +119,7 @@ class DatabaseSeeder extends Seeder
          'type' => 'Parent',
      ]);
 
+     //14
       $user = User::factory()->create([
          'name' => 'HAKIM',
          'email' => 'hakim@gmail.com',
@@ -113,6 +127,7 @@ class DatabaseSeeder extends Seeder
          'type' => 'Parent',
       ]);
 
+      //15
       $user = User::factory()->create([
          'name' => 'AZMAN',
          'email' => 'azman@gmail.com',
@@ -120,6 +135,7 @@ class DatabaseSeeder extends Seeder
          'type' => 'Parent',
      ]);
 
+     //16
       $user = User::factory()->create([
          'name' => 'FAISAL',
          'email' => 'faisal@gmail.com',
@@ -127,6 +143,7 @@ class DatabaseSeeder extends Seeder
          'type' => 'Parent',
       ]);
 
+      //17
       $user = User::factory()->create([
          'name' => 'MUHAMAD',
          'email' => 'muhamad@gmail.com',
@@ -134,6 +151,7 @@ class DatabaseSeeder extends Seeder
          'type' => 'Parent',
      ]);
 
+     //18
      $user = User::factory()->create([
          'name' => 'AISHA',
          'email' => 'aisya@darulhuffaz.com',
@@ -141,6 +159,7 @@ class DatabaseSeeder extends Seeder
          'type' => 'Teacher',
      ]);
 
+     //19
       $user = User::factory()->create([
          'name' => 'MOHAMMAD',
          'email' => 'mohammad@darulhuffaz.com',
@@ -148,6 +167,7 @@ class DatabaseSeeder extends Seeder
          'type' => 'Teacher',
       ]);
 
+      //20
       $user = User::factory()->create([
          'name' => 'YUSUF',
          'email' => 'yusuf@darulhuffaz.com',
@@ -155,6 +175,7 @@ class DatabaseSeeder extends Seeder
          'type' => 'Teacher',
      ]);
 
+     //21
       $user = User::factory()->create([
          'name' => 'SAFIYA',
          'email' => 'safiya@darulhuffaz.com',
@@ -162,6 +183,7 @@ class DatabaseSeeder extends Seeder
          'type' => 'Teacher',
       ]);
 
+      //22
       $user = User::factory()->create([
          'name' => 'MARIAM',
          'email' => 'mariam@darulhuffaz.com',
@@ -169,6 +191,7 @@ class DatabaseSeeder extends Seeder
          'type' => 'Teacher',
      ]);
 
+     //23
       $user = User::factory()->create([
          'name' => 'ZAKI',
          'email' => 'zaki@darulhuffaz.com',
@@ -176,6 +199,7 @@ class DatabaseSeeder extends Seeder
          'type' => 'Staff',
       ]);
 
+      //24
       $user = User::factory()->create([
          'name' => 'FATIN',
          'email' => 'fatin@darulhuffaz.com',
@@ -183,6 +207,7 @@ class DatabaseSeeder extends Seeder
          'type' => 'Staff',
      ]);
 
+     //25
       $user = User::factory()->create([
          'name' => 'FIKRI',
          'email' => 'ahmadfikri@darulhuffaz.com',
@@ -190,6 +215,7 @@ class DatabaseSeeder extends Seeder
          'type' => 'Staff',
       ]);
 
+      //26
       $user = User::factory()->create([
          'name' => 'NURULAIN',
          'email' => 'nurulain@darulhuffaz.com',
@@ -197,6 +223,7 @@ class DatabaseSeeder extends Seeder
          'type' => 'Staff',
      ]);
 
+     //27
       $user = User::factory()->create([
          'name' => 'ZULHELMI',
          'email' => 'zulhelmi@darulhuffaz.com',
@@ -204,7 +231,7 @@ class DatabaseSeeder extends Seeder
          'type' => 'Staff',
       ]);
 
-      //26
+      //28
       $user = User::factory()->create([
          'name' => 'ZAKIR',
          'email' => 'zakir@gmail.com',
@@ -212,7 +239,7 @@ class DatabaseSeeder extends Seeder
          'type' => 'Parent',
      ]);
 
-     //27
+     //29
       $user = User::factory()->create([
          'name' => 'NIK MAT',
          'email' => 'nikman@gmail.com',
@@ -220,7 +247,7 @@ class DatabaseSeeder extends Seeder
          'type' => 'Parent',
       ]);
 
-      //28
+      //30
       $user = User::factory()->create([
          'name' => 'ISMAIL ',
          'email' => 'ismail_hashim@gmail.com',
@@ -228,7 +255,7 @@ class DatabaseSeeder extends Seeder
          'type' => 'Parent',
      ]);
 
-     //29
+     //31
       $user = User::factory()->create([
          'name' => 'ZIZAN',
          'email' => 'zizan@gmail.com',
@@ -236,6 +263,7 @@ class DatabaseSeeder extends Seeder
          'type' => 'Parent',
      ]);
 
+     //32
       $user = User::factory()->create([
          'name' => 'AMIN',
          'email' => 'amin.aman@gmail.com',
@@ -243,6 +271,7 @@ class DatabaseSeeder extends Seeder
          'type' => 'Parent',
       ]);
 
+      //33
       $user = User::factory()->create([
          'name' => 'WAN AIMAN',
          'email' => 'wan.aiman@gmail.com',
@@ -250,6 +279,7 @@ class DatabaseSeeder extends Seeder
          'type' => 'Parent',
      ]);
 
+     //34
       $user = User::factory()->create([
          'name' => 'ABDUL RAHIM',
          'email' => 'abdul.rahim@gmail.com',
@@ -257,6 +287,7 @@ class DatabaseSeeder extends Seeder
          'type' => 'Parent',
       ]);
 
+      //35
       $user = User::factory()->create([
          'name' => 'HELMI',
          'email' => 'helmi@gmail.com',
@@ -264,6 +295,7 @@ class DatabaseSeeder extends Seeder
          'type' => 'Parent',
      ]);
 
+     //36
       $user = User::factory()->create([
          'name' => 'AHMAD',
          'email' => 'ahmad.jamaludin@gmail.com',
@@ -271,6 +303,7 @@ class DatabaseSeeder extends Seeder
          'type' => 'Parent',
       ]);
 
+      //37
       $user = User::factory()->create([
          'name' => 'AHMAD',
          'email' => 'ahmad.zulkefli@gmail.com',
@@ -278,6 +311,7 @@ class DatabaseSeeder extends Seeder
          'type' => 'Parent',
      ]);
 
+     //38
       $user = User::factory()->create([
          'name' => 'MAT JUMAT',
          'email' => 'matjumat@gmail.com',
@@ -285,6 +319,7 @@ class DatabaseSeeder extends Seeder
          'type' => 'Parent',
       ]);
 
+      //39
       $user = User::factory()->create([
          'name' => 'AHMAD',
          'email' => 'ahmad.ismail@gmail.com',
@@ -292,6 +327,7 @@ class DatabaseSeeder extends Seeder
          'type' => 'Parent',
      ]);
 
+     //40
       $user = User::factory()->create([
          'name' => 'AHMAD',
          'email' => 'ahmad.jalal@gmail.com',
@@ -299,6 +335,7 @@ class DatabaseSeeder extends Seeder
          'type' => 'Parent',
       ]);
 
+      //41
       $user = User::factory()->create([
          'name' => 'MOHD RAZALI',
          'email' => 'mohdrazali@gmail.com',
@@ -306,11 +343,20 @@ class DatabaseSeeder extends Seeder
          'type' => 'Parent',
      ]);
 
+     //42
      $user = User::factory()->create([
          'name' => 'ABDULLAH',
          'email' => 'abdullah.mohammad@gmail.com',
          'password' => bcrypt('1234567'),
          'type' => 'Parent',
+      ]);
+
+      //43
+      $user = User::factory()->create([
+         'name' => 'SYAMSIAH',
+         'email' => 'syamsiah@darulhuffaz.com',
+         'password' => bcrypt('1234567'),
+         'type' => 'Teacher',
       ]);
 
         Students::create([

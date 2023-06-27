@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Staffs;
+use App\Models\Students;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,12 +17,23 @@ class StaffController extends Controller
         if (!in_array(Auth::user()->type, ['Headmaster'])) {
             abort(403, 'Unauthorized');
         }
+
         $staffs = Staffs::latest()->paginate(10);
+
+        // Get total count of user type 'staff'
+        $totalStaffs = User::where('type', 'staff')->count();
+
+        // Get total count of user type 'teacher'
+        $totalTeachers = User::where('type', 'teacher')->count();
+
+        // Get total count of students
+        $totalStudents = Students::count();
 
         Session::put('staffs', $staffs);
 
-        return view('staffs.indexStaff', compact('staffs'));
+        return view('staffs.indexStaff', compact('staffs', 'totalStaffs', 'totalTeachers', 'totalStudents'));
     }
+
 
     //show staff detail profile 
     public function show(Staffs $staff){

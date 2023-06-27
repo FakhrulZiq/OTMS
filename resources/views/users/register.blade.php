@@ -35,6 +35,13 @@
 						Sign Up
 					</span>
 
+					<!-- Add the error message display -->
+					@if ($errors->any())
+						<div class="alert alert-danger">
+							{{ $errors->first() }}
+						</div>
+					@endif
+					
 					<div class="wrap-input100 validate-input" data-validate="Name is required: ex@abc.xyz">
 						<input class="input100" type="text" name="Username" placeholder="Username" value="{{ old('Username') }}">
 						<span class="focus-input100"></span>
@@ -79,21 +86,21 @@
 						@enderror --}}
 					</div>
 
-					<input type="hidden" id="hidden-field" name="ICno" value="empty">
-					<input type="hidden" id="hidden-field" name="Address1" value="empty">
-					<input type="hidden" id="hidden-field" name="Address2" value="empty">
-					<input type="hidden" id="hidden-field" name="Poscode" value=0>
-					<input type="hidden" id="hidden-field" name="City" value="empty">
-					<input type="hidden" id="hidden-field" name="State" value="empty">
-					<input type="hidden" id="hidden-field" name="PhoneNo" value="empty">
-					<input type="hidden" id="hidden-field" name="Nationality" value="empty">
-					<input type="hidden" id="hidden-field" name="Job" value="empty">
-					<input type="hidden" id="hidden-field" name="Income" value=0>
-					<input type="hidden" id="hidden-field" name="OfficeAddress1" value="empty">
-					<input type="hidden" id="hidden-field" name="OfficeAddress2" value="empty">
-					<input type="hidden" id="hidden-field" name="OfficePoscode" value=0>
-					<input type="hidden" id="hidden-field" name="OfficeCity" value="empty">
-					<input type="hidden" id="hidden-field" name="OfficeState" value="empty">
+					<input type="hidden" id="hidden-field-1" name="ICno" value="empty">
+					<input type="hidden" id="hidden-field-2" name="Address1" value="empty">
+					<input type="hidden" id="hidden-field-3" name="Address2" value="empty">
+					<input type="hidden" id="hidden-field-4" name="Poscode" value=0>
+					<input type="hidden" id="hidden-field-5" name="City" value="empty">
+					<input type="hidden" id="hidden-field-6" name="State" value="empty">
+					<input type="hidden" id="hidden-field-7" name="PhoneNo" value="empty">
+					<input type="hidden" id="hidden-field-8" name="Nationality" value="empty">
+					<input type="hidden" id="hidden-field-9" name="Job" value="empty">
+					<input type="hidden" id="hidden-field-10" name="Income" value=0>
+					<input type="hidden" id="hidden-field-11" name="OfficeAddress1" value="empty">
+					<input type="hidden" id="hidden-field-12" name="OfficeAddress2" value="empty">
+					<input type="hidden" id="hidden-field-13" name="OfficePoscode" value=0>
+					<input type="hidden" id="hidden-field-14" name="OfficeCity" value="empty">
+					<input type="hidden" id="hidden-field-15" name="OfficeState" value="empty">
 
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn" type="submit">Sign Up</button>

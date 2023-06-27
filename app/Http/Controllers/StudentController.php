@@ -22,16 +22,21 @@ use Illuminate\Support\Facades\Auth;
 class StudentController extends Controller
 {
     //show all student
-    public function index()
-    {
+    public function index() {
         if (!in_array(Auth::user()->type, ['Headmaster', 'Staff', 'Teacher'])) {
             abort(403, 'Unauthorized');
-        }        
+        }
 
-        return view('students.indexStudent', [
-            'students' => Students::latest()->filter(request(['Status', 'search']))->paginate(10)
-        ]);
+        // Get total counts of students with different statuses
+        $totalPendingApprovals = Students::where('Status', 'Pending')->count();
+        $totalApproved = Students::where('Status', 'Active')->count();
+        $totalRejected = Students::where('Status', 'Rejected')->count();
+
+        $students = Students::latest()->filter(request(['Status', 'search']))->paginate(10);
+
+        return view('students.indexStudent', compact('students', 'totalPendingApprovals', 'totalApproved', 'totalRejected'));
     }
+
     //show student detail profile
     public function show(Students $student)
     {
@@ -76,7 +81,7 @@ class StudentController extends Controller
             'AnakKe' => 'required',
             'SchoolName' => 'required',
             'Status' => 'required',
-            'Teacher_id' => 'required',
+            'Class_id' => 'required',
             'ParentFullName' => 'required',
             'ParentICno' => 'required',
             'ParentAddress1' => 'required',
@@ -112,7 +117,7 @@ class StudentController extends Controller
         $student->LastPaymentDate = Carbon::now()->toDateString();
 
         $learningProgressTable = [
-            'class_id' => $request->input('class_id'),
+            'students_id' => $student->id,
             'percentage' => $request->input('percentage'),
             'juzuk' => $request->input('juzuk'),
             'page' => $request->input('page'),
@@ -133,7 +138,7 @@ class StudentController extends Controller
         $student->parent_id = $parentId;
         $student->save();
 
-        return redirect('/students/list')->with('success', 'Registration Complete!');
+        return redirect('/students/approval/'.$student->id.'')->with('success', 'Registration Complete!');
     }
 
     //show edit registration form
@@ -236,7 +241,12 @@ class StudentController extends Controller
         $approvedCount = $approved->isEmpty() ? 0 : $approved->count();
         $rejectedCount = $rejected->isEmpty() ? 0 : $rejected->count();
 
-        return view('students.studentApprovalList', compact('pendingApprovals', 'approved', 'rejected', 'pendingApprovalsCount', 'approvedCount', 'rejectedCount'));
+        // Get total counts of students with different statuses
+        $totalPendingApprovals = Students::where('Status', 'Pending')->count();
+        $totalApproved = Students::where('Status', 'Active')->count();
+        $totalRejected = Students::where('Status', 'Rejected')->count();
+
+        return view('students.studentApprovalList', compact('pendingApprovals', 'approved', 'rejected', 'pendingApprovalsCount', 'approvedCount', 'rejectedCount', 'totalPendingApprovals', 'totalApproved', 'totalRejected'));
     }
 
     public function approve(Students $student) {

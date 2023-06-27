@@ -21,23 +21,24 @@ class UserController extends Controller
     // Create New User
     public function store(Request $request) {
         $formFields = $request->validate([
-            'FullName' => ['required', 'min:3'],
+            'Username' => ['required', 'min:3'],
             'email' => ['required', 'email', Rule::unique('users', 'email')],
             'password' => ['required', 'min:8']
         ]);
     
-        $fullName = $formFields['FullName'];
-        unset($formFields['FullName']);
+        $fullName = $formFields['Username'];
+        unset($formFields['Username']);
     
         $user = User::create([
             'name' => $fullName,
             'email' => $formFields['email'],
-            'password' => bcrypt($formFields['password'])
+            'password' => bcrypt($formFields['password']),
+            'type' => 'Parent'
         ]);
-    
+
         $parent = Parents::create([
             'User_ID' => $user->id,
-            'FullName' => $request->input('FullName'),
+            'FullName' => $request->input('Username'),
             'ICno' => $request->input('ICno'),
             'Address1' => $request->input('Address1'),
             'Address2' => $request->input('Address2'),
@@ -54,10 +55,10 @@ class UserController extends Controller
             'OfficeCity' => $request->input('OfficeCity'),
             'OfficeState' => $request->input('OfficeState')
         ]);
-    
+
         auth()->login($user);
     
-        return redirect('/students/list')->with('success', 'User created and logged in');
+        return redirect('/parents/'.$parent->id.'/edit-user-profile')->with('success', 'User created and logged in');
     }
 
     // Logout User
@@ -83,10 +84,17 @@ class UserController extends Controller
             } elseif ($userType === 'Headmaster') {
                 return redirect('/students/list')->with('success', 'You are already logged in!');
             } elseif ($userType === 'Parent') {
-                // Get the authenticated user's student
-                $student = auth()->user()->parent->student;
+                // Get the authenticated user's parent
+                $parent = auth()->user()->parent;
 
-                return redirect()->route('students.approval', ['student' => $student])->with('success', 'You are already logged in!');
+                // Check if ICno is empty
+                if ($parent->ICno === 'empty') {
+                    return redirect()->route('parents.edit-profile', ['parent' => $parent])->with('warning', 'Please complete your profile!');
+                }
+                else {
+                    $student = auth()->user()->parent->student;
+                    return redirect()->route('students.approval', ['student' => $student])->with('success', 'You are already logged in!');
+                }
             } elseif ($userType === 'Staff') {
                 return redirect('/students/approval')->with('success', 'You are already logged in!');
             }
@@ -116,10 +124,17 @@ class UserController extends Controller
             } elseif ($userType === 'Headmaster') {
                 return redirect('/students/list')->with('success', 'You are now logged in!');
             } elseif ($userType === 'Parent') {
-                // Get the authenticated user's student
-                $student = $user->parent->student;
-        
-                return redirect()->route('students.approval', ['student' => $student])->with('success', 'You are now logged in!');
+                // Get the authenticated user's parent
+                $parent = auth()->user()->parent;
+
+                // Check if ICno is empty
+                if ($parent->ICno === 'empty') {
+                    return redirect()->route('parents.edit-profile', ['parent' => $parent])->with('warning', 'Please complete your profile!');
+                }
+                else {
+                    $student = auth()->user()->parent->student;
+                    return redirect()->route('students.approval', ['student' => $student])->with('success', 'You are already logged in!');
+                }
             } elseif ($userType === 'Staff') {
                 return redirect('/students/approval')->with('success', 'You are now logged in!');
             }

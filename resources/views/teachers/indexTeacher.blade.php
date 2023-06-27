@@ -23,8 +23,8 @@
                                 </div>
                                 <div class="panel-body">
                                     <h4>STAFF</h4>
-                                    <h2 class="statistic-number" data-number="120">0</h2>
-                                    <a href="#" class="view-all-btn">
+                                    <h2 class="statistic-number" data-number="{{$totalStaffs}}">0</h2>
+                                    <a href="/staffs/list" class="view-all-btn">
                                         <span>View All</span>
                                         <i class="bx bx-right-arrow-alt"></i>
                                     </a>
@@ -40,8 +40,8 @@
                                 </div>
                                 <div class="panel-body">
                                     <h4>TEACHER</h4>
-                                    <h2 class="statistic-number" data-number="10">0</h2>
-                                    <a href="#" class="view-all-btn">
+                                    <h2 class="statistic-number" data-number="{{$totalTeachers}}">0</h2>
+                                    <a href="/teachers/list" class="view-all-btn">
                                         <span>View All</span>
                                         <i class="bx bx-right-arrow-alt"></i>
                                     </a>
@@ -57,8 +57,8 @@
                                 </div>
                                 <div class="panel-body">
                                     <h4>STUDENT</h4>
-                                    <h2 class="statistic-number" data-number="320">0</h2>
-                                    <a href="#" class="view-all-btn">
+                                    <h2 class="statistic-number" data-number="{{$totalStudents}}">0</h2>
+                                    <a href="/students/list" class="view-all-btn">
                                         <span>View All</span>
                                         <i class="bx bx-right-arrow-alt"></i>
                                     </a>
@@ -70,18 +70,7 @@
                     <div class="table-responsive">
                         <div class="input-group">
                             <div class="input-group-btn search-panel">
-                                <form action="{{ url()->current() }}">
-                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                        <span id="search_concept">Filter by</span> <span class="caret"></span>
-                                    </button>
-                                    <ul class="dropdown-menu" role="menu">
-                                        <li><a href="{{ url()->current() }}">All</a></li>
-                                        <li class="divider"></li>
-                                        <li><a href="{{ url()->current() }}?Status=Active">Active</a></li>
-                                        <li><a href="{{ url()->current() }}?Status=Inactive">Inactive</a></li>
-                                        <li><a href="{{ url()->current() }}?Status=Pending">Pending</a></li>
-                                        <li><a href="{{ url()->current() }}?Status=Rejected">Rejected</a></li>
-                                    </ul>
+                                <form action="{{ url()->current() }}">  
                                 </div>
                                 <input type="hidden" name="search_param" value="all" id="search_param">         
                                 <input type="text" class="form-control" name="search" id="myInput" placeholder="Search term..." value="{{ request('search') }}">

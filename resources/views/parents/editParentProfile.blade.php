@@ -72,13 +72,13 @@
                             <div class="col">
                                 <div class="form-group">
                                     <label>Full Name</label>
-                                    <input class="form-control" type="text" name="FullName" placeholder="{{$parent->FullName}}" value="{{$parent->FullName}}" readonly>
+                                    <input class="form-control" type="text" name="FullName" onkeyup="var start = this.selectionStart; var end = this.selectionEnd; this.value = this.value.toUpperCase(); this.setSelectionRange(start, end);" placeholder="{{$parent->FullName}}" required>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="form-group">
                                     <label>IC Number</label>
-                                    <input class="form-control" type="text" name="ICno" placeholder="{{$parent->ICno}}" value="{{$parent->ICno}}">
+                                    <input class="form-control" type="text" name="ICno" placeholder="{{$parent->ICno}}" required>
                                 </div>
                             </div>     
                         </div>
@@ -86,13 +86,13 @@
                             <div class="col">
                                 <div class="form-group">
                                     <label>Address 1</label>
-                                    <input class="form-control" type="text" name="Address1" placeholder="{{$parent->Address1}}" value="{{$parent->Address1}}">
+                                    <input class="form-control" type="text" name="Address1" placeholder="{{$parent->Address1}}" required>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="form-group">
                                     <label>Address 2</label>
-                                    <input class="form-control" type="text" name="Address2" placeholder="{{$parent->Address2}}" value="{{$parent->Address2}}">
+                                    <input class="form-control" type="text" name="Address2" placeholder="{{$parent->Address2}}" required>
                                 </div>
                             </div>
                         </div>
@@ -100,13 +100,13 @@
                             <div class="col">
                                 <div class="form-group">
                                     <label>Posscode</label>
-                                    <input class="form-control" type="number" name="Poscode" placeholder="{{$parent->Poscode}}" value="{{$parent->Poscode}}">
+                                    <input class="form-control" type="number" name="Poscode" placeholder="{{$parent->Poscode}}" required>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="form-group">
                                     <label>City</label>
-                                    <input class="form-control" type="text" name="City" placeholder="{{$parent->City}}" value="{{$parent->City}}">
+                                    <input class="form-control" type="text" name="City" placeholder="{{$parent->City}}" required>
                                 </div>
                             </div>
                             <div class="col">
@@ -138,7 +138,7 @@
                             <div class="col">
                                 <div class="form-group">
                                     <label>Phone Number</label>
-                                    <input type="text" class="form-control" name="PhoneNo" id="PhoneNo" value="{{$parent->PhoneNo}}" required>
+                                    <input type="text" class="form-control" name="PhoneNo" placeholder="{{$parent->PhoneNo}}" required>
                                 </div>
                             </div>
                             <div class="col">
@@ -155,13 +155,13 @@
                             <div class="col">
                                 <div class="form-group">
                                     <label>Job</label>
-                                    <input type="text" class="form-control" name="Job" id="Job" value="{{$parent->Job}}" required>
+                                    <input type="text" class="form-control" name="Job" placeholder="{{$parent->Job}}" required>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="form-group">
                                     <label>Income</label>
-                                    <input type="text" class="form-control" name="Income" id="Income" value="{{$parent->Income}}" required>
+                                    <input type="text" class="form-control" name="Income" placeholder="{{$parent->Income}}" required>
                                 </div>
                             </div>
                         </div>
@@ -169,13 +169,13 @@
                             <div class="col">
                                 <div class="form-group">
                                     <label>Office Address 1</label>
-                                    <input class="form-control" type="text" name="OfficeAddress1" placeholder="{{$parent->OfficeAddress1}}" value="{{$parent->OfficeAddress1}}">
+                                    <input class="form-control" type="text" name="OfficeAddress1" placeholder="{{$parent->OfficeAddress1}}" required>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="form-group">
                                     <label>Office Address 2</label>
-                                    <input class="form-control" type="text" name="OfficeAddress2" placeholder="{{$parent->OfficeAddress2}}" value="{{$parent->OfficeAddress2}}">
+                                    <input class="form-control" type="text" name="OfficeAddress2" placeholder="{{$parent->OfficeAddress2}}" required>
                                 </div>
                             </div>
                         </div>
@@ -183,13 +183,13 @@
                             <div class="col">
                                 <div class="form-group">
                                     <label>Office Posscode</label>
-                                    <input class="form-control" type="number" name="OfficePoscode" placeholder="{{$parent->OfficePoscode}}" value="{{$parent->OfficePoscode}}">
+                                    <input class="form-control" type="number" name="OfficePoscode" placeholder="{{$parent->OfficePoscode}}" required>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="form-group">
                                     <label>Office City</label>
-                                    <input class="form-control" type="text" name="OfficeCity" placeholder="{{$parent->OfficeCity}}" value="{{$parent->OfficeCity}}">
+                                    <input class="form-control" type="text" name="OfficeCity" placeholder="{{$parent->OfficeCity}}" required>
                                 </div>
                             </div>
                             <div class="col">

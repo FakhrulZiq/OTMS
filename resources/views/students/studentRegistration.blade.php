@@ -189,10 +189,9 @@
                         <p class="text-red-500 text-xs mt-1">{{$message}}</p>
                     @enderror
                 </div>
-                <input type="hidden" id="hidden-field" name="class_id" value="1">
-                <input type="hidden" id="hidden-field" name="percentage" value="0">
-                <input type="hidden" id="hidden-field" name="juzuk" value="1">
-                <input type="hidden" id="hidden-field" name="page" value="1">
+                <input type="hidden" id="hidden-field-2" name="percentage" value="0">
+                <input type="hidden" id="hidden-field-3" name="juzuk" value="0">
+                <input type="hidden" id="hidden-field-4" name="page" value="0">
                 <div class="col-sm-12">
                     <h1> </h1>
                     <br>
@@ -285,7 +284,7 @@
                 </div>
                 <div class="col-sm-6 form-group">
                     <label for="tel"><h4>Phone Number</h4></label>
-                    <input type="tel" name="ParentPhoneNo" class="form-control" id="ParentPhoneNo" pattern="[0-9]{3}-[0-9]{8}" placeholder="00-00000000" required>
+                    <input type="tel" name="ParentPhoneNo" class="form-control" id="ParentPhoneNo" pattern="[0-9]{3}-[0-9]{8}" placeholder="000-00000000" required>
                     @error('ParentPhoneNo')
                         <p class="text-red-500 text-xs mt-1">{{$message}}</p>
                     @enderror
@@ -400,20 +399,20 @@
                     </div>
                     <div class="col-sm-6 form-group">
                         <label for="Class"><h4>Class</h4></label>
-                        <select class="form-control custom-select browser-default" name="Teacher_id" id="Teacher_id">
+                        <select class="form-control custom-select browser-default" name="Class_id" id="Class_id">
                             <option value="">--Choose--</option>
                             <option value="1">LEVEL 1 - IQRA (Session 1 - Morning)</option>
-                            <option value="1">LEVEL 1 - IQRA (Session 2 - Morning)</option>
-                            <option value="2">LEVEL 1 - IQRA (Session 2 - Night)</option>
-                            <option value="2">LEVEL 1 - IQRA (Session 2 - Night)</option>
-                            <option value="3">LEVEL 2 - TALAQI BACAAN (Session 1 - Morning)</option>
-                            <option value="3">LEVEL 2 - TALAQI BACAAN (Session 2 - Morning)</option>
-                            <option value="4">LEVEL 2 - TALAQI BACAAN (Session 1 - Night)</option>
-                            <option value="4">LEVEL 2 - TALAQI BACAAN (Session 2 - Night)</option>
-                            <option value="5">LEVEL 3 - TALAQI & HAFAZAN (Session 1 - Morning)</option>
-                            <option value="5">LEVEL 3 - TALAQI & HAFAZAN (Session 2 - Morning)</option>
-                            <option value="6">LEVEL 3 - TALAQI & HAFAZAN (Session 1 - Night)</option>
-                            <option value="6">LEVEL 3 - TALAQI & HAFAZAN (Session 2 - Night)</option>
+                            <option value="2">LEVEL 1 - IQRA (Session 2 - Morning)</option>
+                            <option value="3">LEVEL 1 - IQRA (Session 2 - Night)</option>
+                            <option value="4">LEVEL 1 - IQRA (Session 2 - Night)</option>
+                            <option value="5">LEVEL 2 - TALAQI BACAAN (Session 1 - Morning)</option>
+                            <option value="6">LEVEL 2 - TALAQI BACAAN (Session 2 - Morning)</option>
+                            <option value="7">LEVEL 2 - TALAQI BACAAN (Session 1 - Night)</option>
+                            <option value="8">LEVEL 2 - TALAQI BACAAN (Session 2 - Night)</option>
+                            <option value="9">LEVEL 3 - TALAQI & HAFAZAN (Session 1 - Morning)</option>
+                            <option value="10">LEVEL 3 - TALAQI & HAFAZAN (Session 2 - Morning)</option>
+                            <option value="11">LEVEL 3 - TALAQI & HAFAZAN (Session 1 - Night)</option>
+                            <option value="12">LEVEL 3 - TALAQI & HAFAZAN (Session 2 - Night)</option>
                         </select>
                         @error('ParentState')
                             <p class="text-red-500 text-xs mt-1">{{$message}}</p>
@@ -471,6 +470,11 @@
                     <div class="col-sm-12">
                         <h1> </h1>
                     </div>
+                    @if ($errors->any())
+						<div class="alert alert-danger">
+							{{ $errors->first() }}
+						</div>
+					@endif
                 </div>
             </div>
         </div>

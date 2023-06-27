@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Students;
 use App\Models\Teachers;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -14,12 +16,21 @@ class TeacherController extends Controller
         if (Auth::user()->type !== 'Headmaster') {
             abort(403, 'Unauthorized');
         }
-        
-        return view('teachers.indexTeacher', [
-            // 'teachers' => teachers::latest()->filter(request(['Status', 'search']))->paginate(10)
-            'teachers' => Teachers::latest()->paginate(10)
-        ]);
+
+        $teachers = Teachers::latest()->paginate(10);
+
+        // Get total count of user type 'staff'
+        $totalStaffs = User::where('type', 'staff')->count();
+
+        // Get total count of user type 'teacher'
+        $totalTeachers = User::where('type', 'teacher')->count();
+
+        // Get total count of students
+        $totalStudents = Students::count();
+
+        return view('teachers.indexTeacher', compact('teachers', 'totalStaffs', 'totalTeachers', 'totalStudents'));
     }
+
     //show teacher detail profile 
     public function show(Teachers $teacher){
         if (Auth::user()->type !== 'Headmaster') {

@@ -41,8 +41,9 @@ class ParentsController extends Controller
         return view('parents.editParent', ['parent' => $parent]);
     }
 
-    public function update(Request $request, Parents $parent) {
+    public function update(Request $request, $id) {
         // Update the parent's details
+        $parent = Parents::find($id);
         $parent->FullName = $request->input('FullName');
         $parent->ICno = $request->input('ICno');
         $parent->Address1 = $request->input('Address1');
@@ -79,7 +80,7 @@ class ParentsController extends Controller
         }
 
         // Save the updated parent record
-        $parent->save();
+        $parent->update();
 
         return redirect()->back()->with('success', 'Parent details updated!');
     }

@@ -106,8 +106,17 @@
                     </li>      
                 @elseif(auth()->user()->type === 'Parent')
                     <li>
-                        <a href="/students/registration"><i class='bx bx-file'></i><span class="links_name">Registration</span></a>
-                        <span class="tooltip">New Registration</span>
+                        @php
+                            $parent = auth()->user()->parent;
+                        @endphp
+
+                        @if($parent->ICno === 'empty')
+                            <a href="#" onclick="myFunction()"><i class='bx bx-file'></i><span class="links_name">Registration</span></a>
+                            <span class="tooltip">New Registration</span>
+                        @else
+                            <a href="/students/registration"><i class='bx bx-file'></i><span class="links_name">Registration</span></a>
+                            <span class="tooltip">New Registration</span>
+                        @endif
                     </li>
                     @auth
                         @if(auth()->user()->parent && auth()->user()->parent->student)
@@ -260,5 +269,10 @@
             }
         }
     </script>
+    <script>
+        function myFunction() {
+          alert("Please complete the user profile before create a new registration!");
+        }
+        </script>
 </body>
 </html>

@@ -12,18 +12,18 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="main-box clearfix">
-                     <!-- Statistic Cards -->
+                    <!-- Statistic Cards -->
                     <div class="row">
                         <div class="col-md-4">
                             <div class="panel panel-default">
                                 <div class="statistic-icon">
                                     <div class="icon icon-shape" style="background-color: #c5d300">
-                                        <i class='bx bx-user-pin'></i>
+                                        <i class='bx bx-comment-detail'></i>
                                     </div>
                                 </div>
                                 <div class="panel-body">
-                                    <h4>STAFF</h4>
-                                    <h2 class="statistic-number" data-number="120">0</h2>
+                                    <h4>Pending</h4>
+                                    <h2 class="statistic-number" data-number="{{$totalPendingApprovals}}">0</h2>
                                     <a href="#" class="view-all-btn">
                                         <span>View All</span>
                                         <i class="bx bx-right-arrow-alt"></i>
@@ -35,12 +35,12 @@
                             <div class="panel panel-default">
                                 <div class="statistic-icon">
                                     <div class="icon icon-shape" style="background-color: #419a49">
-                                        <i class='bx bx-book-open' ></i>
+                                        <i class='bx bx-comment-check' ></i>
                                     </div>
                                 </div>
                                 <div class="panel-body">
-                                    <h4>TEACHER</h4>
-                                    <h2 class="statistic-number" data-number="10">0</h2>
+                                    <h4>Active</h4>
+                                    <h2 class="statistic-number" data-number="{{$totalApproved}}">0</h2>
                                     <a href="#" class="view-all-btn">
                                         <span>View All</span>
                                         <i class="bx bx-right-arrow-alt"></i>
@@ -52,12 +52,12 @@
                             <div class="panel panel-default" style="background-color:#c8dcfc">
                                 <div class="statistic-icon">
                                     <div class="icon icon-shape" style="background-color: #41609a">
-                                        <i class='bx bxs-graduation'></i>
+                                        <i class='bx bx-comment-x'></i>
                                     </div>
                                 </div>
                                 <div class="panel-body">
-                                    <h4>STUDENT</h4>
-                                    <h2 class="statistic-number" data-number="320">0</h2>
+                                    <h4>Rejected</h4>
+                                    <h2 class="statistic-number" data-number="{{$totalRejected}}">0</h2>
                                     <a href="#" class="view-all-btn">
                                         <span>View All</span>
                                         <i class="bx bx-right-arrow-alt"></i>
@@ -78,7 +78,6 @@
                                         <li><a href="{{ url()->current() }}">All</a></li>
                                         <li class="divider"></li>
                                         <li><a href="{{ url()->current() }}?Status=Active">Active</a></li>
-                                        <li><a href="{{ url()->current() }}?Status=Inactive">Inactive</a></li>
                                         <li><a href="{{ url()->current() }}?Status=Pending">Pending</a></li>
                                         <li><a href="{{ url()->current() }}?Status=Rejected">Rejected</a></li>
                                     </ul>
