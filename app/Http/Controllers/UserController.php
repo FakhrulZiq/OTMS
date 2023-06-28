@@ -82,7 +82,7 @@ class UserController extends Controller
             if ($userType === 'Teacher') {
                 return redirect('/students/learning-progress-list')->with('success', 'You are already logged in!');
             } elseif ($userType === 'Headmaster') {
-                return redirect('/students/list')->with('success', 'You are already logged in!');
+                return redirect('/staffs/list')->with('success', 'You are already logged in!');
             } elseif ($userType === 'Parent') {
                 // Get the authenticated user's parent
                 $parent = auth()->user()->parent;
@@ -122,7 +122,7 @@ class UserController extends Controller
             if ($userType === 'Teacher') {
                 return redirect('/students/learning-progress-list')->with('success', 'You are now logged in!');
             } elseif ($userType === 'Headmaster') {
-                return redirect('/students/list')->with('success', 'You are now logged in!');
+                return redirect('/staffs/list')->with('success', 'You are now logged in!');
             } elseif ($userType === 'Parent') {
                 // Get the authenticated user's parent
                 $parent = auth()->user()->parent;

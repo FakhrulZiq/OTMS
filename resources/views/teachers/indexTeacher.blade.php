@@ -22,7 +22,7 @@
                                     </div>
                                 </div>
                                 <div class="panel-body">
-                                    <h4>STAFF</h4>
+                                    <h4>CLERK</h4>
                                     <h2 class="statistic-number" data-number="{{$totalStaffs}}">0</h2>
                                     <a href="/staffs/list" class="view-all-btn">
                                         <span>View All</span>
@@ -80,6 +80,9 @@
                             </form>
                         </div>
                         <br>
+                        <div class="text-right">
+                            <a href="#" class="btn btn-primary">Add Teacher</a>
+                        </div>
                         <table class="table user-list">
                             <thead>
                                 <tr>

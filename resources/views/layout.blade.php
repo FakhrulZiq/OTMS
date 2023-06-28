@@ -104,12 +104,12 @@
                             </button>
                         </form>
                     </li>      
-                @elseif(auth()->user()->type === 'Parent')
+                    @elseif(auth()->user()->type === 'Parent')
                     <li>
                         @php
                             $parent = auth()->user()->parent;
                         @endphp
-
+                
                         @if($parent->ICno === 'empty')
                             <a href="#" onclick="myFunction()"><i class='bx bx-file'></i><span class="links_name">Registration</span></a>
                             <span class="tooltip">New Registration</span>
@@ -122,8 +122,9 @@
                         @if(auth()->user()->parent && auth()->user()->parent->student)
                             @php
                                 $student = auth()->user()->parent->student;
+                                $payment = $student->payment;
                             @endphp
-
+                
                             @if($student->Status === 'Pending' || $student->Status === 'Rejected')
                                 <li>
                                     <a href="{{ route('students.approval', ['student' => $student->id]) }}">
@@ -141,25 +142,26 @@
                                     <span class="tooltip">Student Status</span>
                                 </li>
                                 <li>
-                                    <a href="{{ route('students.view-learning-progress', ['student' => $student->id]) }}">
-                                        <i class="bx bx-book-bookmark"></i>
-                                        <span class="links_name">Learning Progress</span>
-                                    </a>
-                                    <span class="tooltip">Learning Progress</span>
+                                    @if($student->RegistrastionFee === 'unpaid')
+                                        <a href="#" onclick="showPaymentPopup()">
+                                            <i class='bx bx-book-bookmark'></i>
+                                            <span class="links_name">Learning Progress</span>
+                                        </a>
+                                        <span class="tooltip">Learning Progress</span>
+                                    @else
+                                        <a href="{{ route('students.view-learning-progress', ['student' => $student->id]) }}">
+                                            <i class="bx bx-book-bookmark"></i>
+                                            <span class="links_name">Learning Progress</span>
+                                        </a>
+                                        <span class="tooltip">Learning Progress</span>
+                                    @endif
                                 </li>
                                 <li>
-                                    @auth
-                                        @if(auth()->user()->parent && auth()->user()->parent->student)
-                                            @php
-                                                $student = auth()->user()->parent->student;
-                                            @endphp
-                                        <a href="{{ route('students.fee-payment', ['student' => $student->id]) }}">
-                                                <i class="bx bx-cart"></i>
-                                                <span class="links_name">Payment</span>
-                                            </a>
-                                        @endif
-                                    @endauth                  
-                                    <span class="tooltip">Fee Payemnt</span>
+                                    <a href="{{ route('students.fee-payment', ['student' => $student->id]) }}">
+                                        <i class="bx bx-cart"></i>
+                                        <span class="links_name">Payment</span>
+                                    </a>
+                                    <span class="tooltip">Fee Payment</span>
                                 </li>
                             @endif
                         @endif
@@ -186,7 +188,8 @@
                                 <i class="bx bx-log-out" id="log_out"></i>
                             </button>
                         </form>
-                    </li>                                                                    
+                    </li>
+                                                                
                 @elseif(auth()->user()->type === 'Staff')
                     <li>
                         <a href="/students/list"><i class='bx bxs-graduation'></i><span class="links_name">Manage Students</span></a>
@@ -273,6 +276,11 @@
         function myFunction() {
           alert("Please complete the user profile before create a new registration!");
         }
-        </script>
+    </script>
+    <script>
+        function showPaymentPopup() {
+          alert("Please complete the Registration Fee to get access this function!");
+        }
+    </script>
 </body>
 </html>

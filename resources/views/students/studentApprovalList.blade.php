@@ -77,7 +77,7 @@
             </div>
         </div>
         <div class="col-md-4">
-            <div class="panel panel-default" style="background-color:#c8dcfc">
+            <div class="panel panel-default">
                 <div class="statistic-icon">
                     <div class="icon icon-shape" style="background-color: #41609a">
                         <i class='bx bx-comment-x'></i>

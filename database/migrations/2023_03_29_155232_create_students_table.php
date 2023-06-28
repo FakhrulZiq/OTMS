@@ -35,6 +35,7 @@ return new class extends Migration
             $table->string('Status');
             $table->string('ProfileImage') ->nullable();
             $table->string('LastPaymentDate') ->nullable();
+            $table->string('RegistrastionFee') ->nullable();
             $table->string('ParentFullName');
             $table->string('ParentICno');
             $table->string('ParentAddress1');

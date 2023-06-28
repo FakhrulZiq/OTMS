@@ -251,7 +251,8 @@ class StudentController extends Controller
 
     public function approve(Students $student) {
         $student->status = 'Active';
-
+        $student->RegistrastionFee = 'Unpaid';
+    
         // Get the logged-in user's ID
         $userId = Auth::id();
     
@@ -263,12 +264,24 @@ class StudentController extends Controller
             $student->staff_id = $staff->id;
             $student->save();
     
+            // Create a new payment record
+            $payment = new Payments();
+            $payment->student_id = $student->id;
+            $payment->invoice_id = 'INV-' . $student->id . '-000';
+            $payment->invoice_date = now()->format('Y-m-d');
+            $payment->amount = 100;
+            $payment->month = 'Registration';
+            $payment->year = 'Fee';
+            $payment->status = 'unpaid';
+            $payment->save();
+    
             return redirect()->back()->with('success', 'Student status updated to approved!');
         } else {
             // Handle the case where no staff record is found for the logged-in user
             return redirect()->back()->with('error', 'No staff record found for the logged-in user.');
         }
     }
+    
 
     public function reject(Students $student) {
         $student->status = 'Rejected';
@@ -412,7 +425,8 @@ class StudentController extends Controller
         foreach ($unpaidPayments as $payment) {
             $unpaidFees[] = (object) [
                 'invoice_id' => $payment['invoice_id'],
-                'month' => Carbon::parse($payment['invoice_date'])->format('F Y'),
+                'month' => $payment['month']. ' '.$payment['year'],
+                'year' => Carbon::parse($payment['invoice_date'])->format('Y'),
                 'amount' => $payment['amount']
             ];
         }
@@ -421,9 +435,9 @@ class StudentController extends Controller
         foreach ($paidPayments as $payment) {
             $paidFees[] = (object) [
                 'invoice_id' => $payment['invoice_id'],
-                'month' => Carbon::parse($payment->invoice_date)->format('F Y'),
-                'amount' => $payment->amount,
-                'year' => Carbon::parse($payment['invoice_date'])->format('Y')
+                'month' => $payment['month']. ' '.$payment['year'],
+                'year' => Carbon::parse($payment['invoice_date'])->format('Y'),
+                'amount' => $payment['amount']
             ];
         }
 

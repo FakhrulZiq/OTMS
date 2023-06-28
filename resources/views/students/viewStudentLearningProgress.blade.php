@@ -128,7 +128,7 @@ select {
 
 <div class="containers">
     <div class="profile">
-        <img class="profile-image" src="{{$student->ProfileImage ? asset('/storage/profileImages/' .$student->ProfileImage) : asset('/images/no-image.jpg')}}" alt="Profile Image">
+        <img class="profile-image" src="{{$student->ProfileImage ? asset('/profileImages/' .$student->ProfileImage) : asset('/images/no-image.jpg')}}" alt="Profile Image">
         <div>
             <h2>{{$student->FullName}}</h2>
             <p>Teacher: {{$teacher->FullName}}</p>

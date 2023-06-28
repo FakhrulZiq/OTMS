@@ -24,7 +24,7 @@
                                 <div class="panel-body">
                                     <h4>Pending</h4>
                                     <h2 class="statistic-number" data-number="{{$totalPendingApprovals}}">0</h2>
-                                    <a href="#" class="view-all-btn">
+                                    <a href="/students/approval" class="view-all-btn">
                                         <span>View All</span>
                                         <i class="bx bx-right-arrow-alt"></i>
                                     </a>
@@ -41,7 +41,7 @@
                                 <div class="panel-body">
                                     <h4>Active</h4>
                                     <h2 class="statistic-number" data-number="{{$totalApproved}}">0</h2>
-                                    <a href="#" class="view-all-btn">
+                                    <a href="/students/approval" class="view-all-btn">
                                         <span>View All</span>
                                         <i class="bx bx-right-arrow-alt"></i>
                                     </a>
@@ -49,7 +49,7 @@
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <div class="panel panel-default" style="background-color:#c8dcfc">
+                            <div class="panel panel-default">
                                 <div class="statistic-icon">
                                     <div class="icon icon-shape" style="background-color: #41609a">
                                         <i class='bx bx-comment-x'></i>
@@ -58,7 +58,7 @@
                                 <div class="panel-body">
                                     <h4>Rejected</h4>
                                     <h2 class="statistic-number" data-number="{{$totalRejected}}">0</h2>
-                                    <a href="#" class="view-all-btn">
+                                    <a href="/students/approval" class="view-all-btn">
                                         <span>View All</span>
                                         <i class="bx bx-right-arrow-alt"></i>
                                     </a>

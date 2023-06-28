@@ -1,6 +1,7 @@
 @extends('layout')
 
 @section('content')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <style>
     /* Container styles */
     .table-container {
@@ -115,8 +116,8 @@
       }
     }
   </style>
-
-  <h1 style="margin-left: 10%">Fee Payment</h1>
+  <h4 style="margin-left: 10%;"><a href="{{ url()->previous() }}"><i class="fa fa-angle-double-left" style="font-size:25px;"></i> Back</a></h4>
+  <h1 style="margin-left: 10%; padding-bottom: 20px;">Fee Payment</h1>
   
   <!-- Student Profile Card -->
   <div class="profile-card">
@@ -156,7 +157,7 @@
           <tr>
             <th style="width: 12%">Invoice ID</th>
             <th>Student Name</th>
-            <th style="width: 15%">Deatils</th>
+            <th style="width: 18%">Deatils</th>
             <th style="width: 10%">Year</th>
             <th style="width: 10%">Amount</th>
             <th style="width: 10%">Action</th>
@@ -168,7 +169,7 @@
               <td>{{ $payment->invoice_id }}</td>
               <td>{{ $student->FullName }}</td>
               <td>{{ $payment->month }}</td>
-              <td>{{ Carbon\Carbon::parse($payment->month)->format('Y') }}</td>
+              <td>{{ $payment->year }}</td>
               <td>RM {{ $payment->amount }}</td>
               <td><a href="{{ route('students.payment-checkout', ['student' => $student, 'invoice_id' => $payment->invoice_id]) }}" class="btn btn-success pay-btn px-3">Pay</a></td>
             </tr>
@@ -190,7 +191,7 @@
           <tr>
             <th style="width: 12%">Invoice ID</th>
             <th>Student Name</th>
-            <th style="width: 15%">Details</th>
+            <th style="width: 18%">Details</th>
             <th style="width: 10%">Year</th>
             <th style="width: 10%">Amount</th>
             <th style="width: 10%">Action</th>

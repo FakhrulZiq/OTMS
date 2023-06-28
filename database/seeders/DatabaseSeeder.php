@@ -397,7 +397,8 @@ class DatabaseSeeder extends Seeder
            'OfficePoscode' => '56000',
            'OfficeCity' => 'Kuala Lumpur',
            'OfficeState' => 'Wilayah Persekutuan Kuala Lumpur',
-        ]);
+           'RegistrastionFee' => 'paid',
+         ]);
 
         Students::create([
             'Parent_id' => '7',
@@ -437,6 +438,7 @@ class DatabaseSeeder extends Seeder
             'OfficePoscode' => '50480',
             'OfficeCity' => 'Kuala Lumpur',
             'OfficeState' => 'Wilayah Persekutuan Kuala Lumpur',
+     'RegistrastionFee' => 'paid',         
          ]);
 
          Students::create([
@@ -477,6 +479,7 @@ class DatabaseSeeder extends Seeder
             'OfficePoscode' => '43000',
             'OfficeCity' => 'Kajang',
             'OfficeState' => 'Selangor',
+              'RegistrastionFee' => 'paid',
          ]);
 
          Students::create([
@@ -517,6 +520,7 @@ class DatabaseSeeder extends Seeder
             'OfficePoscode' => '43100',
             'OfficeCity' => 'Kajang',
             'OfficeState' => 'Selangor',
+              'RegistrastionFee' => 'paid',
          ]);
 
          Students::create([
@@ -557,6 +561,7 @@ class DatabaseSeeder extends Seeder
             'OfficePoscode' => '78000',
             'OfficeCity' => 'Alor Setar',
             'OfficeState' => 'Kedah',
+              'RegistrastionFee' => 'paid',
          ]);
 
          Students::create([
@@ -597,6 +602,7 @@ class DatabaseSeeder extends Seeder
             'OfficePoscode' => '56000',
             'OfficeCity' => 'Kuala Lumpur',
             'OfficeState' => 'Wilayah Persekutuan Kuala Lumpur',
+              'RegistrastionFee' => 'paid',
          ]);
  
          Students::create([
@@ -637,7 +643,8 @@ class DatabaseSeeder extends Seeder
              'OfficePoscode' => '43000',
              'OfficeCity' => '43000',
              'OfficeState' => 'Selangor',
-          ]);
+              'RegistrastionFee' => 'paid',
+            ]);
  
           Students::create([
              'Parent_id' => '5',
@@ -677,7 +684,8 @@ class DatabaseSeeder extends Seeder
              'OfficePoscode' => '56000',
              'OfficeCity' => 'Kuala Lumpur',
              'OfficeState' => 'Wilayah Persekutuan Kuala Lumpur  ',
-          ]);
+              'RegistrastionFee' => 'paid',
+            ]);
  
           Students::create([
              'Parent_id' => '3',
@@ -717,7 +725,8 @@ class DatabaseSeeder extends Seeder
              'OfficePoscode' => '81750',
              'OfficeCity' => 'Masai',
              'OfficeState' => 'Johor',
-          ]);
+              'RegistrastionFee' => 'paid',
+            ]);
  
           Students::create([
              'Parent_id' => '13',
@@ -757,7 +766,8 @@ class DatabaseSeeder extends Seeder
              'OfficePoscode' => '46100',
              'OfficeCity' => 'Petaling Jaya',
              'OfficeState' => 'Selangor',
-          ]);
+              'RegistrastionFee' => 'paid',
+            ]);
 
           Students::create([
             'Parent_id' => '12',
@@ -797,6 +807,7 @@ class DatabaseSeeder extends Seeder
             'OfficePoscode' => '81750',
             'OfficeCity' => 'Masai',
             'OfficeState' => 'Johor',
+              'RegistrastionFee' => 'paid',
          ]);
  
          Students::create([
@@ -837,7 +848,8 @@ class DatabaseSeeder extends Seeder
              'OfficePoscode' => '43200',
              'OfficeCity' => 'Cheras',
              'OfficeState' => 'Selangor',
-          ]);
+              'RegistrastionFee' => 'paid',
+            ]);
  
           Students::create([
              'Parent_id' => '8',
@@ -877,7 +889,8 @@ class DatabaseSeeder extends Seeder
              'OfficePoscode' => '78000',
              'OfficeCity' => 'Alor Setar',
              'OfficeState' => 'Kedah',
-          ]);
+              'RegistrastionFee' => 'paid',
+            ]);
  
           Students::create([
              'Parent_id' => '11',
@@ -917,7 +930,8 @@ class DatabaseSeeder extends Seeder
              'OfficePoscode' => '56000',
              'OfficeCity' => 'Kuala Lumpur',
              'OfficeState' => 'Wilayah Persekutuan Kuala Lumpur',
-          ]);
+              'RegistrastionFee' => 'paid',
+            ]);
  
           Students::create([
              'Parent_id' => '9',
@@ -957,7 +971,8 @@ class DatabaseSeeder extends Seeder
              'OfficePoscode' => '43000',
              'OfficeCity' => 'Kajang',
              'OfficeState' => 'Selangor',
-          ]);
+              'RegistrastionFee' => 'paid',
+            ]);
 
          //  ----------------------------------------------------------
           Students::create([
@@ -998,7 +1013,8 @@ class DatabaseSeeder extends Seeder
             'OfficePoscode' => '43020',
             'OfficeCity' => 'Kajang',
             'OfficeState' => 'Selangor',
-            ]);
+              'RegistrastionFee' => 'paid',
+         ]);
             
             Students::create([
             'Parent_id' => '29',
@@ -1038,7 +1054,8 @@ class DatabaseSeeder extends Seeder
             'OfficePoscode' => '83000',
             'OfficeCity' => 'Johor Bahru',
             'OfficeState' => 'Johor',
-            ]);
+                 'RegistrastionFee' => 'paid',
+         ]);
             
             Students::create([
             'Parent_id' => '22',
@@ -1078,7 +1095,8 @@ class DatabaseSeeder extends Seeder
             'OfficePoscode' => '75000',
             'OfficeCity' => 'Melaka',
             'OfficeState' => 'Melaka',
-            ]);
+                 'RegistrastionFee' => 'paid',
+         ]);
             
             Students::create([
             'Parent_id' => '23',
@@ -1118,7 +1136,8 @@ class DatabaseSeeder extends Seeder
             'OfficePoscode' => '56100',
             'OfficeCity' => 'Kuala Lumpur',
             'OfficeState' => 'Wilayah Persekutuan',
-            ]);
+                 'RegistrastionFee' => 'paid',
+         ]);
             
             Students::create([
             'Parent_id' => '24',
@@ -1158,7 +1177,8 @@ class DatabaseSeeder extends Seeder
             'OfficePoscode' => '43200',
             'OfficeCity' => 'Kajang',
             'OfficeState' => 'Selangor',
-            ]);
+                 'RegistrastionFee' => 'paid',
+         ]);
             
             Students::create([
             'Parent_id' => '25',
@@ -1198,7 +1218,8 @@ class DatabaseSeeder extends Seeder
             'OfficePoscode' => '81100',
             'OfficeCity' => 'Johor Bahru',
             'OfficeState' => 'Johor',
-            ]);
+                 'RegistrastionFee' => 'paid',
+         ]);
             
             Students::create([
             'Parent_id' => '26',
@@ -1238,7 +1259,8 @@ class DatabaseSeeder extends Seeder
             'OfficePoscode' => '43000',
             'OfficeCity' => 'Kajang',
             'OfficeState' => 'Selangor',
-            ]);
+                 'RegistrastionFee' => 'paid',
+         ]);
             
             Students::create([
             'Parent_id' => '27',
@@ -1278,7 +1300,8 @@ class DatabaseSeeder extends Seeder
             'OfficePoscode' => '43000',
             'OfficeCity' => 'Kajang',
             'OfficeState' => 'Selangor',
-            ]);
+                 'RegistrastionFee' => 'paid',
+         ]);
             
             Students::create([
             'Parent_id' => '28',
@@ -1318,7 +1341,8 @@ class DatabaseSeeder extends Seeder
             'OfficePoscode' => '81100',
             'OfficeCity' => 'Johor Bahru',
             'OfficeState' => 'Johor',
-            ]);
+                 'RegistrastionFee' => 'paid',
+         ]);
 
             Students::create([
             'Parent_id' => '17',
@@ -1358,7 +1382,8 @@ class DatabaseSeeder extends Seeder
             'OfficePoscode' => '43000',
             'OfficeCity' => 'Kajang',
             'OfficeState' => 'Selangor',
-            ]);
+                 'RegistrastionFee' => 'paid',
+         ]);
             
             //REPEAT
             Students::create([
@@ -1399,7 +1424,8 @@ class DatabaseSeeder extends Seeder
             'OfficePoscode' => '81100',
             'OfficeCity' => 'Johor Bahru',
             'OfficeState' => 'Johor',
-            ]);
+                 'RegistrastionFee' => 'paid',
+         ]);
 
             Students::create([
             'Parent_id' => '18',
@@ -1439,7 +1465,8 @@ class DatabaseSeeder extends Seeder
             'OfficePoscode' => '43000',
             'OfficeCity' => 'Kajang',
             'OfficeState' => 'Selangor',
-            ]);
+                 'RegistrastionFee' => 'paid',
+         ]);
 
             Students::create([
             'Parent_id' => '19',
@@ -1479,7 +1506,8 @@ class DatabaseSeeder extends Seeder
             'OfficePoscode' => '43000',
             'OfficeCity' => 'Kajang',
             'OfficeState' => 'Selangor',
-            ]);
+                 'RegistrastionFee' => 'paid',
+         ]);
             
 
             Students::create([
@@ -1520,7 +1548,8 @@ class DatabaseSeeder extends Seeder
             'OfficePoscode' => '43000',
             'OfficeCity' => 'Kajang',
             'OfficeState' => 'Selangor',
-            ]);
+                 'RegistrastionFee' => 'paid',
+         ]);
             
             Students::create([
             'Parent_id' => '21',
@@ -1560,7 +1589,8 @@ class DatabaseSeeder extends Seeder
             'OfficePoscode' => '43000',
             'OfficeCity' => 'Kajang',
             'OfficeState' => 'Selangor',
-            ]);
+                 'RegistrastionFee' => 'paid',
+         ]);
           $this->call(learningProgressSeeder::class);
           $this->call(ParentsSeeder::class);
           $this->call(ClassSeeder::class);

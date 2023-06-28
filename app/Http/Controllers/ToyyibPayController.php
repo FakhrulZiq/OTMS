@@ -30,6 +30,7 @@ class ToyyibPayController extends Controller
 
         $code = config('toyyibpay.categoryCode');
 
+        $totalAmount = $payment->amount * 100;
         $bill_object = [
             'userSecretKey' => config('toyyibpay.client_secret'),
             'categoryCode' => config('toyyibpay.categoryCode'),
@@ -37,7 +38,7 @@ class ToyyibPayController extends Controller
             'billDescription' => 'Fee payment for'.$payment->month.' '.$payment->year,
             'billPriceSetting' => 1,
             'billPayorInfo' => 1,
-            'billAmount' => 5000,
+            'billAmount' => $totalAmount,
             'billReturnUrl' => route('students.toyyib-status'),
             'billCallbackUrl' => route('students.toyyib-callback'),
             'billExternalReferenceNo' => $payment->invoice_id,
@@ -85,6 +86,11 @@ class ToyyibPayController extends Controller
         $payment->payment_date = $formattedDate;
         $payment->save();
     
+        // Update the RegistrationFee attribute in the students table
+        $student = Students::find($payment->student_id);
+        $student->RegistrastionFee = $paymentStatus;
+        $student->save();
+
         // Convert the array to an object
         $paymentObject = (object) $payment;
 
