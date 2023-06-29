@@ -19,6 +19,7 @@
                 <h2>{{$student->FullName}}</h2>
                 <p>Teacher: {{$teacher->FullName}}</p>
                 <p>Last Update: {{ date('d-m-Y', strtotime($learningProgress->updated_at)) }}</p>
+                <p>Class {{ $class->className}}</p>
             </div>
         </div>
         <input type="hidden" name="students_id" value="{{$student->id}}">
@@ -78,8 +79,9 @@
         <th>Juzuk</th>
         <th>Page</th>
         <th>Time update</th>
+        <th style="width: 10%">Action</th>
     </tr>
-    @foreach($student->learningProgress()->orderBy('updated_at', 'desc')->get() as $progress)
+    @foreach($student->learningProgress()->orderBy('updated_at', 'desc')->paginate(10) as $progress)
         <tr>
             <td class="text-center">
                 <div class="progress-bar">
@@ -89,16 +91,33 @@
             <td>{{ $progress->juzuk }}</td>
             <td>{{ $progress->page }}</td>
             <td>{{ date('d-m-Y', strtotime($progress->updated_at)) }}</td>
+            <td>
+                <form method="POST" action="/students/learning-progress/{{$progress->id}}" id="deleteForm_{{$progress->id}}">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger btn-sm deleteBtn" data-form-id="deleteForm_{{$progress->id}}">
+                        Delete
+                    </button>
+                </form>
+            </td>
         </tr>
     @endforeach
+    {{ $student->learningProgress()->orderBy('updated_at', 'desc')->paginate(10)->links() }}
 </table>
 
-  <canvas id="myChart" style="width:100%;max-width:600px; margin: 0 auto; margin-top:"></canvas>
+<h3 style="margin-left: 10%">Chart Record for 2023</h3>
+<div class="chart-card">
+    <canvas id="myChart" style="width:100%;max-width:1000px;"></canvas>
+  </div>
   <h1 style="padding-bottom: 50px;"></h1>
   <script>
-    const xValues = [1,2,3,4,5,6,7,8,9,10,11,12];
-    const yValues = [1,2,4,{{$learningProgress->juzuk}}];
-
+    const xValues = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    const yValues = [
+        @foreach ($juzukData as $month => $juzuk)
+            {{ $juzuk ?? 'null' }},
+        @endforeach
+    ];
+    
     new Chart("myChart", {
       type: "line",
       data: {
@@ -158,6 +177,20 @@
 
         // Update the progress bar width
         progressBar.style.width = `${progress}%`;
+    });
+</script>
+<script>
+    // Add event listener to delete buttons
+    const deleteButtons = document.querySelectorAll('.deleteBtn');
+    deleteButtons.forEach(button => {
+        button.addEventListener('click', function(event) {
+            event.preventDefault();
+            const formId = button.getAttribute('data-form-id');
+            const confirmation = confirm('Are you sure you want to delete this Learning Progress?');
+            if (confirmation) {
+                document.getElementById(formId).submit();
+            }
+        });
     });
 </script>
 @endsection

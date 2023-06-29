@@ -72,6 +72,9 @@ Route::post('/students/learning-progress', [StudentController::class, 'addLearni
 //index - show student learning progress
 Route::get('/students/learning-progress-list', [StudentController::class, 'learningList']);
 
+//delete - delete student learning progress
+Route::delete('/students/learning-progress/{progress}', [StudentController::class, 'destroyLearningProgress'])->name('learning-progress.destroy');
+
 // delete - delete student detail profile
 Route::delete('/students/{students}', [StudentController::class, 'destroy']);
 

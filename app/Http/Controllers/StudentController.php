@@ -318,8 +318,23 @@ class StudentController extends Controller
         $learningProgress = $student->learningProgress()->orderBy('updated_at', 'desc')->first();
         $class = Classes::find($student->Class_id);
         $teacher = Teachers::where('id', $class->Teacher_ID)->first();
-        return view('students.studentLearningProgress', compact('student', 'learningProgress', 'teacher'));
+        
+        $juzukData = [];
+        
+        // Iterate over the months
+        for ($month = 1; $month <= 12; $month++) {
+            $juzuk = LearningProgress::select('juzuk')
+                ->where('students_id', $id)
+                ->whereMonth('updated_at', $month)
+                ->orderBy('updated_at', 'desc')
+                ->first();
+            
+            $juzukData[$month] = $juzuk ? $juzuk->juzuk : null;
+        }
+        
+        return view('students.studentLearningProgress', compact('student', 'learningProgress', 'teacher', 'class', 'juzukData'));
     }
+    
 
     //show student learning progess as parent
     public function viewLearning($id) {
@@ -328,7 +343,20 @@ class StudentController extends Controller
         $class = Classes::find($student->Class_id);
         $teacher = Teachers::where('id', $class->Teacher_ID)->first();
     
-        return view('students.viewStudentLearningProgress', compact('student', 'learningProgress', 'teacher'));
+        $juzukData = [];
+        
+        // Iterate over the months
+        for ($month = 1; $month <= 12; $month++) {
+            $juzuk = LearningProgress::select('juzuk')
+                ->where('students_id', $id)
+                ->whereMonth('updated_at', $month)
+                ->orderBy('updated_at', 'desc')
+                ->first();
+            
+            $juzukData[$month] = $juzuk ? $juzuk->juzuk : null;
+        }
+
+        return view('students.viewStudentLearningProgress', compact('student', 'learningProgress', 'teacher', 'juzukData'));
     }
     
 
@@ -405,6 +433,12 @@ class StudentController extends Controller
         // Redirect the user to a success page with the progress variable
         return redirect()->back()->with(['success' => 'Student learning progress updated successfully!', 'progress' => $progress]);
     }    
+
+    public function destroyLearningProgress(LearningProgress $progress) { 
+        $progress->delete();
+
+        return redirect()->back()->with('success', 'Learning progress deleted successfully!');
+    }
 
     public function payment(Students $student) {
         $this->middleware('parent.auth');

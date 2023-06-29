@@ -108,6 +108,15 @@ select {
     animation-fill-mode: forwards;
 }
 
+.chart-card {
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 0 auto;
+    max-width: 1000px;
+  }
+
 @keyframes progress-animation {
     0% {
         width: 0;
