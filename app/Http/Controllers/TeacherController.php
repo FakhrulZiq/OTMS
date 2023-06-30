@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Students;
 use App\Models\Teachers;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -41,6 +42,67 @@ class TeacherController extends Controller
             'teacher' => $teacher
         ]);
     }
+
+    // Create - Teacher registration form
+    public function create() {
+        return view('teachers.registerTeacher');
+    }
+
+    public function store(Request $request) {
+        // Validate the form data for teacher
+        $validatedTeacherData = $request->validate([
+            'FullName' => 'required',
+            'ICno' => 'required',
+            'Address1' => 'required',
+            'Address2' => 'required',
+            'Poscode' => 'required',
+            'City' => 'required',
+            'State' => 'required',
+            'PhoneNo' => 'required',
+            'Nationality' => 'required',
+        ]);
+
+        // Validate the form data for user login credentials
+        $validatedLoginData = $request->validate([
+            'Username' => ['required', 'min:3'],
+            'Email' => ['required', 'email', Rule::unique('users', 'email')],
+            'Password' => ['required', 'min:8']
+        ]);
+
+        // Create a new User instance and assign the form data
+        $user = new User;
+        $user->name = $validatedLoginData['Username'];
+        $user->email = $validatedLoginData['Email'];
+        $user->password = bcrypt($validatedLoginData['Password']);
+        $user->type = 'Teacher';
+
+        // Save the user data to the database
+        $user->save();
+
+        // Create a new Teacher instance and assign the form data
+        $teacher = new Teachers;
+        $teacher->FullName = $user->name;
+        $teacher->ICno = $validatedTeacherData['ICno'];
+        $teacher->Address1 = $validatedTeacherData['Address1'];
+        $teacher->Address2 = $validatedTeacherData['Address2'];
+        $teacher->Poscode = $validatedTeacherData['Poscode'];
+        $teacher->City = $validatedTeacherData['City'];
+        $teacher->State = $validatedTeacherData['State'];
+        $teacher->PhoneNo = $validatedTeacherData['PhoneNo'];
+        $teacher->Nationality = $validatedTeacherData['Nationality'];
+        $teacher->Position = 'Teacher';
+        $teacher->DateJoin = now()->format('Y-m-d');
+
+        // Assign the User_ID with the user's ID
+        $teacher->User_ID = $user->id;
+
+        // Save the teacher data to the database
+        $teacher->save();
+
+        // Redirect to a success page or perform any other desired actions
+        return redirect()->route('teachers.indexTeacher')->with('success', 'Teacher registered successfully.');
+    }
+
 
     //show edit registration form
     public function edit(Teachers $teacher) {
@@ -122,8 +184,19 @@ class TeacherController extends Controller
 
     //delete studenet details
     public function destroy($id) {
-        Teachers::destroy($id);
+        // Find the teacher record by ID
+        $teacher = Teachers::findOrFail($id);
 
-        return redirect()->back() ->with('info','Teachers details deleted successfully!');
+        // Retrieve the associated user ID
+        $userId = $teacher->User_ID;
+
+        // Delete the teacher record
+        $teacher->delete();
+
+        // Delete the associated user record
+        User::destroy($userId);
+
+        return redirect()->back()->with('info', 'Teacher details and user record deleted successfully!');
     }
+
 }

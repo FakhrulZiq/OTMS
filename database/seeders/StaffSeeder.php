@@ -24,7 +24,7 @@ class StaffSeeder extends Seeder
             'State' => 'Selangor',
             'PhoneNo' => '011-24798476',
             'Nationality' => 'Warganegara',
-            'Position' => 'Teacher',
+            'Position' => 'Staff',
         ]);
 
         Staffs::create([
@@ -38,7 +38,7 @@ class StaffSeeder extends Seeder
             'State' => 'Selangor',
             'PhoneNo' => '011-24798476',
             'Nationality' => 'Warganegara',
-            'Position' => 'Teacher',
+            'Position' => 'Staff',
          ]);
 
          Staffs::create([
@@ -52,7 +52,7 @@ class StaffSeeder extends Seeder
             'State' => 'Selangor',
             'PhoneNo' => '011-24798476',
             'Nationality' => 'Warganegara',
-            'Position' => 'Teacher',
+            'Position' => 'Staff',
          ]);
 
          Staffs::create([
@@ -66,7 +66,7 @@ class StaffSeeder extends Seeder
             'State' => 'Selangor',
             'PhoneNo' => '011-24798476',
             'Nationality' => 'Warganegara',
-            'Position' => 'Teacher',
+            'Position' => 'Staff',
          ]);
 
          Staffs::create([
@@ -80,7 +80,7 @@ class StaffSeeder extends Seeder
             'State' => 'Selangor',
             'PhoneNo' => '011-24798476',
             'Nationality' => 'Warganegara',
-            'Position' => 'Teacher',
+            'Position' => 'Staff',
          ]);
     }
 }

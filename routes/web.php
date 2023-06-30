@@ -142,10 +142,16 @@ Route::delete('/parents/{parents}', [ParentsController::class, 'destroy']);
 
 
 //-----------------------------TEACHERS-----------------------------------//
-// index - all teacher
-Route::get('/teachers/list', [TeacherController::class, 'index']);
+// Create - Teacher registration form
+Route::get('/teachers/registration', [TeacherController::class, 'create'])->name('teachers.registration');
 
-// show - teacher detail profile
+// Store - Teacher data
+Route::post('/teachers', [TeacherController::class, 'store'])->name('teachers.store');
+
+// Index - All teachers
+Route::get('/teachers/list', [TeacherController::class, 'index'])->name('teachers.indexTeacher');
+
+// Show - Teacher detail profile
 Route::get('/teachers/{teacher}', [TeacherController::class, 'show']);
 
 // Edit teacher detail profile
@@ -165,8 +171,14 @@ Route::delete('/teachers/{teacher}', [TeacherController::class, 'destroy']);
 
 
 //-----------------------------STAFF-----------------------------------//
+// Create - Teacher registration form
+Route::get('/staffs/registration', [StaffController::class, 'create'])->name('staffs.registration');
+
+// Store - Teacher data
+Route::post('/staffs', [StaffController::class, 'store'])->name('staffs.store');
+
 // index - all staff
-Route::get('/staffs/list', [StaffController::class, 'index'])->middleware('customauth');
+Route::get('/staffs/list', [StaffController::class, 'index'])->name('staffs.indexStaff');
 
 // show - staff detail profile
 Route::get('/staffs/{staff}', [StaffController::class, 'show']);

@@ -165,24 +165,12 @@
                                 <input type="text" class="form-control"name="SchoolName" id="SchoolName" value="{{$student->SchoolName}}" required>
                             </div>
                         </div>
-                        
-                        {{-- <div class="form-group">
-                            <div class="col-xs-12">
-                                <br>
-                                <a class="btn btn-lg btn-success" data-toggle="tab"><i class="glyphicon glyphicon-ok-sign"></i> Save</a>
-                                <button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>
-                            </div>
-                        </div>
-                    </form> --}}
                     <hr>
                 </div>
                 
                 <!--/tab-pane-->
                 <div class="tab-pane" id="messages">
                     <hr>
-                    {{-- <form class="form" action="/students/{{$student->id}}_editParent" method="POST" id="registrationForm">
-                        @csrf
-                        @method('PUT') --}}
                         <div class="form-group">
                             <div class="col-xs-6">
                                 <label for="first_name"><h4>Parent Name</h4></label>

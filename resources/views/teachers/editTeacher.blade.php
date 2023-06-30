@@ -24,8 +24,8 @@
 </style>
 <div class="container bootstrap snippet">
     <div class="row">
-        <h4><a href="/teachers/list"><i class="fa fa-angle-double-left" style="font-size:25px;"></i> Back</a></h4>
-        <div class="col-sm-10"><h1>teacher Profile</h1></div>
+        <h4><a href="{{ url()->previous() }}"><i class="fa fa-angle-double-left" style="font-size:25px;"></i> Back</a></h4>
+        <div class="col-sm-10"><h1>Teacher Profile</h1></div>
     </div>
     <div class="row">
         <!--left col-->
@@ -63,7 +63,7 @@
         </div><!--/col-3-->
         <div class="col-sm-9">
             <ul class="nav nav-tabs">
-                <li class="active"><a data-toggle="tab" href="#home">teacher</a></li>
+                <li class="active"><a data-toggle="tab" href="#home">Teacher</a></li>
             </ul>
             
             <div class="tab-content">
@@ -108,7 +108,25 @@
                         <div class="form-group">
                             <div class="col-xs-6">
                                 <label for="state"><h4>State</h4></label>
-                                <input type="text" class="form-control" name="State" id="State" value="{{$teacher->State}}" required>
+                                <select class="form-control custom-select browser-default" name="State" id="State" required>
+                                    <option value="{{$teacher->State}}">{{$teacher->State}}</option>
+                                    <option value="Johor">Johor</option>
+                                    <option value="Kedah">Kedah</option>
+                                    <option value="Kelantan">Kelantan</option>
+                                    <option value="Melaka">Melaka</option>
+                                    <option value="Negeri Sembilan">Negeri Sembilan</option>
+                                    <option value="Pahang">Pahang</option>
+                                    <option value="Perak">Perak</option>
+                                    <option value="Perlis">Perlis</option>
+                                    <option value="Pulau Pinang">Pulau Pinang</option>
+                                    <option value="Sabah">Sabah</option>
+                                    <option value="Sarawak">Sarawak</option>
+                                    <option value="Selangor">Selangor</option>
+                                    <option value="Terengganu">Terengganu</option>
+                                    <option value="Wilayah Persekutuan Kuala Lumpur">Wilayah Persekutuan Kuala Lumpur</option>
+                                    <option value="Wilayah Persekutuan Labuan">Wilayah Persekutuan Labuan</option>
+                                    <option value="Wilayah Persekutuan Kuala Putrajaya">Wilayah Persekutuan Putrajaya</option>
+                                </select>
                             </div>
                         </div>
                         <div class="form-group">
@@ -120,7 +138,11 @@
                         <div class="form-group">
                             <div class="col-xs-6">
                                 <label for="city"><h4>Nationality</h4></label>
-                                <input type="text" class="form-control" name="Nationality" id="Nationality" value="{{$teacher->Nationality}}" required>
+                                <select id="warganeagara" class="form-control browser-default custom-select" name="Nationality" id="Nationality" required>
+                                    <option value="{{$teacher->Nationality}}">{{$teacher->Nationality}}</option>
+                                    <option value="Warganegara">Warganegara</option>
+                                    <option value="Bukan Warganegara">Bukan Warganegara</option>
+                                </select>
                             </div>
                         </div>
                         <div class="form-group">

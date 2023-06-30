@@ -81,7 +81,7 @@
                         </div>
                         <br>
                         <div class="text-right">
-                            <a href="#" class="btn btn-primary">Add Teacher</a>
+                            <a href="{{ route('teachers.registration') }}" class="btn btn-primary">Add Teacher</a>
                         </div>
                         <table class="table user-list">
                             <thead>

@@ -231,28 +231,28 @@
                 </div>
                 <div class="col-sm-6 form-group">
                     <label for="address-1"><h4>Address-1</h4></label>
-                    <input type="text" class="form-control" name="ParentAddress1" id="ParentAddress1" placeholder="Alamat-1" required>
+                    <input type="text" class="form-control" name="ParentAddress1" id="ParentAddress1" placeholder="Address-1" required>
                     @error('ParentAddress1')
                         <p class="text-red-500 text-xs mt-1">{{$message}}</p>
                     @enderror
                 </div>
                 <div class="col-sm-6 form-group">
                     <label for="address-2"><h4>Address-2</h4></label>
-                    <input type="text" class="form-control" name="ParentAddress2" id="ParentAddress2" placeholder="Alamat-2" required>
+                    <input type="text" class="form-control" name="ParentAddress2" id="ParentAddress2" placeholder="Address-2" required>
                     @error('ParentAddress2')
                         <p class="text-red-500 text-xs mt-1">{{$message}}</p>
                     @enderror
                 </div>
                 <div class="col-sm-2 form-group">
                     <label for="Poscode"><h4>Posscode</h4></label>
-                    <input type="number" class="form-control" name="ParentPoscode" id="ParentPoscode" placeholder="Poskod" required>
+                    <input type="number" class="form-control" name="ParentPoscode" id="ParentPoscode" placeholder="Poscode" required>
                     @error('ParentPoscode')
                         <p class="text-red-500 text-xs mt-1">{{$message}}</p>
                     @enderror
                 </div>
                 <div class="col-sm-4 form-group">
                     <label for="city"><h4>City</h4></label>
-                    <input type="text" class="form-control" name="ParentCity" id="ParentCity" placeholder="Bandar" required>
+                    <input type="text" class="form-control" name="ParentCity" id="ParentCity" placeholder="CIty" required>
                     @error('ParentCity')
                         <p class="text-red-500 text-xs mt-1">{{$message}}</p>
                     @enderror

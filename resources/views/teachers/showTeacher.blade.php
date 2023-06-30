@@ -25,8 +25,8 @@
 <div class="container bootstrap snippet">
     
     <div class="row">
-        <h4><a href="/teachers/list"><i class="fa fa-angle-double-left" style="font-size:25px;"></i> Back</a></h4>
-        <div class="col-sm-10"><h1>teacher Profile</h1></div>
+        <h4><a href="{{ url()->previous() }}"><i class="fa fa-angle-double-left" style="font-size:25px;"></i> Back</a></h4>
+        <div class="col-sm-10"><h1>Teacher Profile</h1></div>
     </div>
     <div class="row">
         <!--left col-->
@@ -60,7 +60,7 @@
         </div><!--/col-3-->
         <div class="col-sm-9">
             <ul class="nav nav-tabs">
-                <li class="active"><a data-toggle="tab" href="#home">teacher</a></li>
+                <li class="active"><a data-toggle="tab" href="#home">Teacher</a></li>
             </ul>
             
             <div class="tab-content">
