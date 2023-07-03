@@ -180,7 +180,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="inputbox mt-3 mr-2">
-                                <label for="payment_month"><h5>Payment Month</h5></label>
+                                <label for="payment_month"><h5>Payment Details</h5></label>
                                 <input type="text" class="form-control" name="payment_month" id="payment_month" placeholder="{{$payment->month}}" value="{{$payment->month}}" readonly>
                             </div>
                         </div>
@@ -232,7 +232,7 @@
                     <span>Please note that a charge of <span class="yellow decoration">RM 1.00</span> will be applied for every online payment.</span>
                     {{-- <a href="#" class="yellow decoration">Know all the features</a> --}}
                     <div class="hightlight">
-                        <span>100% Guaranteed support and update for the next 5 years.</span>
+                        <span>If you encounter any difficulties can call our support</span>
                     </div>
                 </div>
             </div>

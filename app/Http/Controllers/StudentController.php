@@ -66,7 +66,7 @@ class StudentController extends Controller
         $registerForm = $request->validate([
             'FullName' => 'required',
             'birthCertificateNO' => 'required',
-            'MyKid' => 'required',
+            'MyKid' => 'required|regex:/^[0-9]{6}-[0-9]{2}-[0-9]{4}$/',
             'Address1' => 'required',
             'Address2' => 'required',
             'Poscode' => 'required',
@@ -74,7 +74,7 @@ class StudentController extends Controller
             'State' => 'required',
             'DOB' => 'required',
             'Sex' => 'required',
-            'PhoneNo' => 'required',
+            'PhoneNo' => 'required|regex:/^\d{3}(-\d{8})?$/',
             'Nationality' => 'required',
             'Disability' => 'required',
             'BillSibling' => 'required',
@@ -83,13 +83,13 @@ class StudentController extends Controller
             'Status' => 'required',
             'Class_id' => 'required',
             'ParentFullName' => 'required',
-            'ParentICno' => 'required',
+            'ParentICno' => 'required|regex:/^[0-9]{6}-[0-9]{2}-[0-9]{4}$/',
             'ParentAddress1' => 'required',
             'ParentAddress2' => 'required',
             'ParentPoscode' => 'required',
             'ParentCity' => 'required',
             'ParentState' => 'required',
-            'ParentPhoneNo' => 'required',
+            'ParentPhoneNo' => 'required|regex:/^[0-9]{3}-[0-9]{8}$/',
             'ParentNationality' => 'required',
             'ParentJob' => 'required',
             'ParentIncome' => 'required',
@@ -267,7 +267,7 @@ class StudentController extends Controller
             // Create a new payment record
             $payment = new Payments();
             $payment->student_id = $student->id;
-            $payment->invoice_id = 'INV-' . $student->id . '-000';
+            $payment->invoice_id = 'INV' . $student->id . '000';
             $payment->invoice_date = now()->format('Y-m-d');
             $payment->amount = 100;
             $payment->month = 'Registration';
@@ -356,7 +356,7 @@ class StudentController extends Controller
             $juzukData[$month] = $juzuk ? $juzuk->juzuk : null;
         }
 
-        return view('students.viewStudentLearningProgress', compact('student', 'learningProgress', 'teacher', 'juzukData'));
+        return view('students.viewStudentLearningProgress', compact('student', 'learningProgress', 'teacher', 'class', 'juzukData'));
     }
     
 

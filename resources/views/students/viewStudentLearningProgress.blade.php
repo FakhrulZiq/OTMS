@@ -17,6 +17,7 @@
             <h2>{{$student->FullName}}</h2>
             <p>Teacher: {{$teacher->FullName}}</p>
             <p>Last Update: {{ date('d-m-Y', strtotime($learningProgress->updated_at)) }}</p>
+            <p>Class {{ $class->className}}</p>
         </div>
     </div>
     <div class="progress">
@@ -42,7 +43,7 @@
         <th>Page</th>
         <th>Time update</th>
     </tr>
-    @foreach($student->learningProgress()->orderBy('updated_at', 'desc')->get() as $progress)
+    @foreach($student->learningProgress()->orderBy('updated_at', 'desc')->paginate(10) as $progress)
         <tr>
             <td class="text-center">
                 <div class="progress-bar">
@@ -55,7 +56,11 @@
         </tr>
     @endforeach
 </table>
-{{ $student->learningProgress()->orderBy('updated_at', 'desc')->paginate(10)->links() }}
+<div class="pagination-container">
+    <div class="pagination-links">
+        {{ $student->learningProgress()->orderBy('updated_at', 'desc')->paginate(10)->links() }}
+    </div>
+</div>
 
 <h3 style="margin-left: 10%">Record Chart for 2023</h3>
   <div class="chart-card">

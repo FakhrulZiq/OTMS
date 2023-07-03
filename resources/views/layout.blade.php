@@ -142,8 +142,8 @@
                                     <span class="tooltip">Student Status</span>
                                 </li>
                                 <li>
-                                    @if($student->RegistrastionFee === 'unpaid')
-                                        <a href="#" onclick="showPaymentPopup()">
+                                    @if($student->RegistrastionFee === 'Unpaid')
+                                        <a href="#" onclick="showPaymentPopup()">   
                                             <i class='bx bx-book-bookmark'></i>
                                             <span class="links_name">Learning Progress</span>
                                         </a>
@@ -280,6 +280,7 @@
     <script>
         function showPaymentPopup() {
           alert("Please complete the Registration Fee to get access this function!");
+          window.location.href = "{{ route('students.fee-payment', ['student' => $student->id]) }}";
         }
     </script>
 </body>

@@ -102,8 +102,13 @@
             </td>
         </tr>
     @endforeach
-    {{ $student->learningProgress()->orderBy('updated_at', 'desc')->paginate(10)->links() }}
 </table>
+<div class="pagination-container">
+    <div class="pagination-links">
+        {{ $student->learningProgress()->orderBy('updated_at', 'desc')->paginate(10)->links() }}
+    </div>
+</div>
+
 
 <h3 style="margin-left: 10%">Chart Record for 2023</h3>
 <div class="chart-card">

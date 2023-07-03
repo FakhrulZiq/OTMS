@@ -117,6 +117,16 @@ select {
     max-width: 1000px;
   }
 
+  .pagination-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+.pagination-links {
+    width: 50%;
+}
+
 @keyframes progress-animation {
     0% {
         width: 0;
