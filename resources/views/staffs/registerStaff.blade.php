@@ -61,7 +61,7 @@
                 <div class="form-group">
                     <div class="col-xs-12">
                         <label for="first_name"><h4>Username</h4></label>
-                        <input type="text" class="form-control" name="Username" placeholder="Username" required>
+                        <input type="text" class="form-control" name="Username" placeholder="Username" onkeyup=" var start = this.selectionStart; var end = this.selectionEnd; this.value = this.value.toUpperCase(); this.setSelectionRange(start, end);" required>
                         @error('Username')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -88,7 +88,7 @@
                             <div class="form-group">
                                 <div class="col-xs-12">
                                     <br>
-                                    <button class="btn btn-lg btn-success" style="float: right" type="submit" onclick="confirm('Are you sure?')"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
+                                    <button class="btn btn-lg btn-success" style="float: right" type="submit" onclick="showConfirmationDialog(event)"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
                                 </div>
                             </div>
                         </form>
@@ -116,6 +116,26 @@
     
       // Activate the "message" tab
       messageTab.click();
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.all.min.js"></script>
+<script>
+    function showConfirmationDialog(event) {
+        event.preventDefault(); // Prevent the form from submitting immediately
+
+        Swal.fire({
+            title: 'Confirmation',
+            text: 'Are you sure?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonText: 'Yes',
+            cancelButtonText: 'No'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // The user clicked "Yes", proceed with form submission
+                event.target.form.submit();
+            }
+        });
     }
 </script>
 @endsection

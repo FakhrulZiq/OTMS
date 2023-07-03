@@ -48,6 +48,7 @@
                 <div class="col-sm-12">
                     <h1> </h1>
                 </div>
+
                 <div class="col-sm-12 form-group">
                     <label for="fname"><h4>Full Name</h4></label>
                     <input type="text" class="form-control" name="FullName" id="FullName" onkeyup="var start = this.selectionStart; var end = this.selectionEnd; this.value = this.value.toUpperCase(); this.setSelectionRange(start, end);" placeholder="Full Name" value="{{ old('FullName') }}">
@@ -216,6 +217,10 @@
             <div class="tab-pane" id="parent">
                 <div class="col-sm-12">
                     <h1> </h1>
+                </div>
+                <div class="col-sm-12">
+                    <input type="checkbox" id="fillParentInfo" onchange="fillParentData()">
+                    <label for="fillParentInfo"><h4>I am the parent</h4></label>
                 </div>
                 <div class="col-sm-6 form-group">
                     <label for="fname"><h4>Full Name</h4></label>
@@ -519,5 +524,46 @@
       messageTab.click();
     }
 </script>
-    
+<script>
+    function fillParentData() {
+    // Check if the checkbox is checked
+    if ($('#fillParentInfo').is(':checked')) {
+        // Fill in the parent information from the parent table
+        $('#ParentFullName').val('{{ $parent->FullName }}');
+        $('#ParentICno').val('{{ $parent->ICno }}');
+        $('#ParentAddress1').val('{{ $parent->Address1 }}');
+        $('#ParentAddress2').val('{{ $parent->Address2 }}');
+        $('#ParentPoscode').val('{{ $parent->Poscode }}');
+        $('#ParentCity').val('{{ $parent->City }}');
+        $('#ParentState').val('{{ $parent->State }}');
+        $('#ParentPhoneNo').val('{{ $parent->PhoneNo }}');
+        $('#ParentNationality').val('{{ $parent->Nationality }}');
+        $('#ParentJob').val('{{ $parent->Job }}');
+        $('#ParentIncome').val('{{ $parent->Income }}');
+        $('#OfficeAddress1').val('{{ $parent->OfficeAddress1 }}');
+        $('#OfficeAddress2').val('{{ $parent->OfficeAddress2 }}');
+        $('#OfficePoscode').val('{{ $parent->OfficePoscode }}');
+        $('#OfficeCity').val('{{ $parent->OfficeCity }}');
+        $('#OfficeState').val('{{ $parent->OfficeState }}');
+    } else {
+        // Clear the parent information
+        $('#ParentFullName').val('');
+        $('#ParentICno').val('');
+        $('#ParentAddress1').val('');
+        $('#ParentAddress2').val('');
+        $('#ParentPoscode').val('');
+        $('#ParentCity').val('');
+        $('#ParentState').val('');
+        $('#ParentPhoneNo').val('');
+        $('#ParentNationality').val('');
+        $('#ParentJob').val('');
+        $('#ParentIncome').val('');
+        $('#OfficeAddress1').val('');
+        $('#OfficeAddress2').val('');
+        $('#OfficePoscode').val('');
+        $('#OfficeCity').val('');
+        $('#OfficeState').val('');
+    }
+}
+</script>
 @endsection

@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
+use Alert;
 
 class UserController extends Controller
 {
@@ -58,7 +59,8 @@ class UserController extends Controller
 
         auth()->login($user);
     
-        return redirect('/parents/'.$parent->id.'/edit-user-profile')->with('success', 'User created and logged in');
+        alert()->success('Success','User created and logged in');
+        return redirect('/parents/'.$parent->id.'/edit-user-profile');
     }
 
     // Logout User
@@ -69,7 +71,8 @@ class UserController extends Controller
         $request->session()->regenerateToken();
         $request->session()->forget('email');
 
-        return redirect('/login')->with('message', 'You have been logged out!');
+        Alert::toast('You have been logged out!','info');
+        return redirect('/login');
 
     }
 
@@ -80,23 +83,28 @@ class UserController extends Controller
             $userType = auth()->user()->type;
 
             if ($userType === 'Teacher') {
-                return redirect('/students/learning-progress-list')->with('success', 'You are already logged in!');
+                Alert::toast('You are already logged in!','info');
+                return redirect('/students/learning-progress-list');
             } elseif ($userType === 'Headmaster') {
-                return redirect('/staffs/list')->with('success', 'You are already logged in!');
+                Alert::toast('You are already logged in!','info');
+                return redirect('/staffs/list');
             } elseif ($userType === 'Parent') {
                 // Get the authenticated user's parent
                 $parent = auth()->user()->parent;
 
                 // Check if ICno is empty
                 if ($parent->ICno === 'empty') {
-                    return redirect()->route('parents.edit-profile', ['parent' => $parent])->with('warning', 'Please complete your profile!');
+                    Alert::toast('Please complete your profile!','warning');
+                    return redirect()->route('parents.edit-profile', ['parent' => $parent]);
                 }
                 else {
                     $student = auth()->user()->parent->student;
-                    return redirect()->route('students.approval', ['student' => $student])->with('success', 'You are already logged in!');
+                    Alert::toast('You are already logged in!','info');
+                    return redirect()->route('students.approval', ['student' => $student]);
                 }
             } elseif ($userType === 'Staff') {
-                return redirect('/students/approval')->with('success', 'You are already logged in!');
+                Alert::toast('You are already logged in!','info');
+                return redirect('/students/approval');
             }
         }
 
@@ -120,23 +128,29 @@ class UserController extends Controller
             $userType = $user->type;
         
             if ($userType === 'Teacher') {
-                return redirect('/students/learning-progress-list')->with('success', 'You are now logged in!');
+                Alert::toast('You are now logged in!','success');
+                return redirect('/students/learning-progress-list');
             } elseif ($userType === 'Headmaster') {
-                return redirect('/staffs/list')->with('success', 'You are now logged in!');
+                Alert::toast('You are now logged in!','success');
+                return redirect('/staffs/list');
             } elseif ($userType === 'Parent') {
                 // Get the authenticated user's parent
                 $parent = auth()->user()->parent;
 
                 // Check if ICno is empty
-                if ($parent->ICno === 'empty') {
-                    return redirect()->route('parents.edit-profile', ['parent' => $parent])->with('warning', 'Please complete your profile!');
+                $student = $parent->student;
+                if ($parent->ICno === 'empty' || !$student) {
+                    Alert::toast('Please complete your profile!','warning');
+                    return redirect()->route('parents.edit-profile', ['parent' => $parent]);
                 }
                 else {
                     $student = auth()->user()->parent->student;
-                    return redirect()->route('students.approval', ['student' => $student])->with('success', 'You are already logged in!');
+                    Alert::toast('You are now logged in!','success');
+                    return redirect()->route('students.approval', ['student' => $student]);
                 }
             } elseif ($userType === 'Staff') {
-                return redirect('/students/approval')->with('success', 'You are now logged in!');
+                Alert::toast('You are now logged in!','success');
+                return redirect('/students/approval');
             }
         }
 
@@ -153,19 +167,22 @@ class UserController extends Controller
 
         // Validate if current password matches the password in the database
         if (!Hash::check($currentPassword, $user->password)) {
-            return redirect()->back()->with(['error' => 'Invalid current password'])->onlyInput('current_password');
+            alert()->error('Error','Invalid current password');
+            return redirect()->back()->onlyInput('current_password');
         }
 
         // Validate if new password and confirm password match
         if ($newPassword !== $confirmPassword) {
-            return redirect()->back()->with(['error' => 'New password and confirm password must match'])->onlyInput('new_password', 'confirm_password');
+            alert()->error('Error','New password and confirm password must match');
+            return redirect()->back()->onlyInput('new_password', 'confirm_password');
         }
 
         // Update the user's password
-        $user->password = Hash::make($newPassword);
+        $user->password = bcrypt($newPassword);
         $user->save();
 
-        return redirect()->back()->with('success', 'Password updated successfully');
+        alert()->success('Success','Password updated successfully');
+        return redirect()->back();
     }
 
 }

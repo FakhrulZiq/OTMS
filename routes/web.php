@@ -76,7 +76,7 @@ Route::get('/students/learning-progress-list', [StudentController::class, 'learn
 Route::delete('/students/learning-progress/{progress}', [StudentController::class, 'destroyLearningProgress'])->name('learning-progress.destroy');
 
 // delete - delete student detail profile
-Route::delete('/students/{students}', [StudentController::class, 'destroy']);
+Route::delete('/students/{students}', [StudentController::class, 'destroy'])->name('students.destroy');
 
 // show - student detail profile
 Route::get('/students/{student}', [StudentController::class, 'show']);
@@ -138,7 +138,7 @@ Route::put('/parents/upload-photo/{parent}', [ParentsController::class, 'uploadP
 Route::get('/parents/{parent}', [ParentsController::class, 'show']);
 
 // delete - delete parent detail profile
-Route::delete('/parents/{parents}', [ParentsController::class, 'destroy']);
+Route::delete('/parents/{parents}', [ParentsController::class, 'destroy'])->name('parents.destroy');
 
 
 //-----------------------------TEACHERS-----------------------------------//
@@ -167,7 +167,7 @@ Route::get('/teachers/{teacher}/edit-user-profile', [TeacherController::class, '
 Route::put('/teachers/upload-photo/{teachers}', [TeacherController::class, 'uploadPhoto'])->name('teachers.uploadPhoto');
 
 // delete - delete teacher detail profile
-Route::delete('/teachers/{teacher}', [TeacherController::class, 'destroy']);
+Route::delete('/teachers/{teacher}', [TeacherController::class, 'destroy'])->name('teachers.destroy');
 
 
 //-----------------------------STAFF-----------------------------------//
@@ -196,7 +196,7 @@ Route::get('/staffs/{staff}/edit-user-profile', [StaffController::class, 'editPr
 Route::put('/staffs/upload-photo/{stafff}', [StaffController::class, 'uploadPhoto'])->name('staffs.uploadPhoto');
 
 // delete - delete staff detail profile
-Route::delete('/staffs/{staff}', [StaffController::class, 'destroy']);
+Route::delete('/staffs/{staff}', [StaffController::class, 'destroy'])->name('staffs.destroy');
 
 
 //--------------------------HEADMASTER-------------------------------//

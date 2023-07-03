@@ -159,7 +159,7 @@
                     </form>
                 </div>
                 <div id="password" class="tab-pane">
-                    <form class="form" method="POST" action="{{ route('users.updatePassword', ['user' => $teacher->id]) }}" novalidate onsubmit="return validatePassword()">
+                    <form class="form" method="POST" action="{{ route('users.updatePassword', ['user' => auth()->user()->id]) }}" novalidate onsubmit="return validatePassword()">
                         @csrf
                         @method('PUT')
                         <div class="row">

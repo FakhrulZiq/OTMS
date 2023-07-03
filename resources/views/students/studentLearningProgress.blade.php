@@ -92,10 +92,12 @@
             <td>{{ $progress->page }}</td>
             <td>{{ date('d-m-Y', strtotime($progress->updated_at)) }}</td>
             <td>
+                <form id="deleteForm_{{ $progress->id }}" action="{{ route('learning-progress.destroy', $progress->id) }}" method="POST" class="delete-form">
                 <form method="POST" action="/students/learning-progress/{{$progress->id}}" id="deleteForm_{{$progress->id}}">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-danger btn-sm deleteBtn" data-form-id="deleteForm_{{$progress->id}}">
+                    <button type="button" class="btn btn-danger btn-sm deleteBtn" data-form-id="deleteForm_{{ $progress->id }}">
+                    {{-- <button type="submit" class="btn btn-danger btn-sm deleteBtn" data-form-id="deleteForm_{{$progress->id}}"> --}}
                         Delete
                     </button>
                 </form>
@@ -184,18 +186,44 @@
         progressBar.style.width = `${progress}%`;
     });
 </script>
-<script>
-    // Add event listener to delete buttons
-    const deleteButtons = document.querySelectorAll('.deleteBtn');
-    deleteButtons.forEach(button => {
-        button.addEventListener('click', function(event) {
-            event.preventDefault();
-            const formId = button.getAttribute('data-form-id');
-            const confirmation = confirm('Are you sure you want to delete this Learning Progress?');
-            if (confirmation) {
-                document.getElementById(formId).submit();
-            }
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.all.min.js"></script>
+    <script>
+        // Attach click event handler to the delete button
+        $('.deleteBtn').click(function () {
+            // Get the ID of the form associated with the button
+            var formId = $(this).data('form-id');
+            
+            // Display the confirmation box
+            const swalWithBootstrapButtons = Swal.mixin({
+                customClass: {
+                    confirmButton: 'btn btn-success',
+                    cancelButton: 'btn btn-danger'
+                },
+                buttonsStyling: false
+            });
+            
+            swalWithBootstrapButtons.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, delete it!',
+                cancelButtonText: 'No, cancel!',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // User confirmed the action
+                    // Submit the associated form
+                    $('#' + formId).submit();
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
+                    // User cancelled the action
+                    swalWithBootstrapButtons.fire(
+                        'Cancelled',
+                        'Student details is safe :)',
+                        'error'
+                    )
+                }
+            });
         });
-    });
-</script>
+    </script>
 @endsection

@@ -34,16 +34,9 @@
 					<span class="login100-form-title">
 						Sign Up
 					</span>
-
-					<!-- Add the error message display -->
-					@if ($errors->any())
-						<div class="alert alert-danger">
-							{{ $errors->first() }}
-						</div>
-					@endif
 					
 					<div class="wrap-input100 validate-input" data-validate="Name is required: ex@abc.xyz">
-						<input class="input100" type="text" name="Username" placeholder="Username" value="{{ old('Username') }}">
+						<input class="input100" type="text" name="Username" placeholder="Username" onkeyup=" var start = this.selectionStart; var end = this.selectionEnd; this.value = this.value.toUpperCase(); this.setSelectionRange(start, end);" value="{{ old('Username') }}">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-user" aria-hidden="true"></i>
@@ -138,6 +131,6 @@
 	</script>
 <!--===============================================================================================-->
 	<script src="{{asset('js/main.js')}}"></script>
-
+	@include('sweetalert::alert')
 </body>
 </html>

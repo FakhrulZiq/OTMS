@@ -34,16 +34,9 @@
 					<span class="login100-form-title">
 						Log In
 					</span>
-
-					<!-- Add the error message display -->
-					@if ($errors->any())
-						<div class="alert alert-danger">
-							{{ $errors->first() }}
-						</div>
-					@endif
 					
                     <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-						<input class="input100" type="email" name="email" placeholder="Email">
+						<input class="input100" type="email" name="email" placeholder="Email" value="{{ old('email') }}">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-envelope" aria-hidden="true"></i>
@@ -103,6 +96,6 @@
 	</script>
 <!--===============================================================================================-->
 	<script src="{{asset('js/main.js')}}"></script>
-
+	@include('sweetalert::alert')
 </body>
 </html>

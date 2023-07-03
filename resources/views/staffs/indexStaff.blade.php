@@ -12,6 +12,7 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.css">
     <div class="container">
         <div class="row"> 
             <div class="col-lg-12">
@@ -115,7 +116,7 @@
                                         <a href="#"><span class="__cf_email__" data-cfemail="660b0f0a07260d13080f154805090b">[email&#160;protected]</span></a>
                                     </td>
                                     <td style="width: 20%;">
-                                        <form method="POST" action="/staffs/{{$staff->id}}" id="deleteForm_{{$staff->id}}">
+                                        <form id="deleteForm_{{ $staff->id }}" action="{{ route('staffs.destroy', $staff->id) }}" method="POST" class="delete-form">
                                             @csrf
                                             @method('DELETE')
                                             <a href="/staffs/{{$staff['id']}}" class="table-link">
@@ -130,7 +131,7 @@
                                                     <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
                                                 </span>
                                             </a>
-                                            <a href="javascript:void(0);" class="table-link danger deleteBtn" data-form-id="deleteForm_{{$staff->id}}">
+                                            <a href="#" class="table-link danger deleteBtn" data-form-id="deleteForm_{{ $staff->id }}">
                                                 <span class="fa-stack">
                                                     <i class="fa fa-square fa-stack-2x"></i>
                                                     <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
@@ -164,14 +165,42 @@
           });
         });
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.all.min.js"></script>
     <script>
-        $(document).ready(function(){
-            $('.deleteBtn').click(function(e){
-                e.preventDefault(); // Don't post the form, unless confirmed
-                var formId = $(this).data('form-id');
-                if (confirm('Are you sure?')) {
-                    // Post the form
+        // Attach click event handler to the delete button
+        $('.deleteBtn').click(function () {
+            // Get the ID of the form associated with the button
+            var formId = $(this).data('form-id');
+            
+            // Display the confirmation box
+            const swalWithBootstrapButtons = Swal.mixin({
+                customClass: {
+                    confirmButton: 'btn btn-success',
+                    cancelButton: 'btn btn-danger'
+                },
+                buttonsStyling: false
+            });
+            
+            swalWithBootstrapButtons.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, delete it!',
+                cancelButtonText: 'No, cancel!',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // User confirmed the action
+                    // Submit the associated form
                     $('#' + formId).submit();
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
+                    // User cancelled the action
+                    swalWithBootstrapButtons.fire(
+                        'Cancelled',
+                        'Staff details is safe :)',
+                        'error'
+                    )
                 }
             });
         });

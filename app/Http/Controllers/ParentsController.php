@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Alert;
 
 class ParentsController extends Controller
 {
@@ -15,7 +16,7 @@ class ParentsController extends Controller
         if (Auth::user()->type !== 'Headmaster') {
             abort(403, 'Unauthorized');
         }
-        
+
         return view('Parents.indexParent', [
             // 'Parents' => Parents::latest()->filter(request(['Status', 'search']))->paginate(10)
             'parents' => Parents::latest()->paginate(10)

@@ -225,14 +225,14 @@
                     </form>
                 </div>
                 <div id="password" class="tab-pane">
-                    <form class="form" method="POST" action="{{ route('users.updatePassword', ['user' => $parent->id]) }}" novalidate onsubmit="return validatePassword()">
+                    <form class="form" method="POST" action="{{ route('users.updatePassword', ['user' => auth()->user()->id]) }}" novalidate onsubmit="return validatePassword()">
                         @csrf
                         @method('PUT')
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
                                     <label>Current Password</label>
-                                    <input class="form-control @error('current_password') is-invalid @enderror" type="password" placeholder="Current Password" name="current_password">
+                                    <input class="form-control" type="password" placeholder="Current Password" name="current_password">
                                     @error('current_password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -245,7 +245,7 @@
                             <div class="col">
                                 <div class="form-group">
                                     <label>New Password</label>
-                                    <input class="form-control @error('new_password') is-invalid @enderror" type="password" placeholder="New Password" name="new_password">
+                                    <input class="form-control" type="password" placeholder="New Password" name="new_password">
                                     @error('new_password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

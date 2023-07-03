@@ -55,10 +55,12 @@ class StudentController extends Controller
     }
 
     //show student registration form
-    public function create()
-    {
-        return view('students.studentRegistration');
+    public function create() {
+        $parent = auth()->user()->parent;
+            
+        return view('students.studentRegistration', compact('parent'));
     }
+
 
     // store student data
     public function store(Request $request)
@@ -437,7 +439,7 @@ class StudentController extends Controller
     public function destroyLearningProgress(LearningProgress $progress) { 
         $progress->delete();
 
-        return redirect()->back()->with('success', 'Learning progress deleted successfully!');
+        return redirect()->back()->with('info', 'Learning progress deleted successfully!');
     }
 
     public function payment(Students $student) {
