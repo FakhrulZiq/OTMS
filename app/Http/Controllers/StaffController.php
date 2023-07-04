@@ -206,6 +206,6 @@ class StaffController extends Controller
         // Delete the associated user record
         User::destroy($userId);
 
-        return redirect()->back()->with('info', 'Staff details and user record deleted successfully!');
+        return redirect()->back()->with('info', 'Staff details deleted successfully!');
     }
 }

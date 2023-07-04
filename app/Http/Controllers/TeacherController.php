@@ -196,7 +196,7 @@ class TeacherController extends Controller
         // Delete the associated user record
         User::destroy($userId);
 
-        return redirect()->back()->with('info', 'Teacher details and user record deleted successfully!');
+        return redirect()->back()->with('info', 'Teacher details deleted successfully!');
     }
 
 }

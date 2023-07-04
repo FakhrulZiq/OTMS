@@ -275,14 +275,15 @@
                             <div class="col-xs-2">
                                     <br>
                                     <button class="btn btn-lg btn-success" style="position: relative; left: 71rem;" type="submit" onclick="confirm('Are you sure?')"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
-                                    {{-- <button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button> --}}
                                 </div>
                         </div>
+                        
                     </form>
                 </div>
             </div><!--/tab-pane-->
         </div><!--/tab-content-->
     </div><!--/col-9-->
+    <h1 style="margin-bottom: 70px"></h1>
 </div><!--/row-->
 
 @endsection

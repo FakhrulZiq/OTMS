@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Alert;
+use App\Models\User;
 use App\Models\Parents;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-use Alert;
 
 class ParentsController extends Controller
 {
@@ -119,7 +120,17 @@ class ParentsController extends Controller
 
     //delete studenet details
     public function destroy($id) {
-        Parents::destroy($id);
+        // Find the teacher record by ID
+        $parent = Parents::findOrFail($id);
+
+        // Retrieve the associated user ID
+        $userId = $parent->User_ID;
+
+        // Delete the teacher record
+        $parent->delete();
+
+        // Delete the associated user record
+        User::destroy($userId);
 
         return redirect()->back() ->with('info','Parents details deleted successfully!');
     }

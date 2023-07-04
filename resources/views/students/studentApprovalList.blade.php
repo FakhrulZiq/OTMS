@@ -125,7 +125,7 @@
                                 <thead>
                                     <tr>
                                         <th><span>User</span></th>
-                                        <th><span>Created</span></th>
+                                        <th><span>Registration Date</span></th>
                                         <th class="text-center"><span>Status</span></th>
                                         <th><span>Email</span></th>
                                         <th>&nbsp;</th>
@@ -138,7 +138,7 @@
                                             <img src="{{$student->ProfileImage ? asset('/profileImages/' .$student->ProfileImage) : asset('/images/no-image.jpg')}}" >
                                             <a href="/students/{{$student['id']}}" class="user-link">{{$student['FullName']}}</a><span class="user-subhead">Student</span>
                                         </td>
-                                        <td>{{$student->DOB}}</td>
+                                        <td>{{ date('d-m-Y', strtotime($student->created_at)) }}</td>
                                         <td class="text-center">
                                             <span class="label label-warning">{{$student->Status}}</span>
                                         </td>
@@ -147,17 +147,18 @@
                                         </td>
                                         <td style="width: 20%;">
                                             <div class="button-container">
-                                                <form method="POST" action="{{ route('students.approve', $student->id) }}">
+                                                <form method="POST" action="{{ route('students.approve', $student->id) }}" id="approveForm">
                                                     @csrf
                                                     @method('PUT')
-                                                    <button type="submit" class="approve-button">
+                                                    <button type="submit" class="approve-button" onclick="confirmApproval(event)">
                                                         <i class="fa fa-check"></i>
                                                     </button>
                                                 </form>
-                                                <form method="POST" action="{{ route('students.reject', $student->id) }}">
+                                                
+                                                <form method="POST" action="{{ route('students.reject', $student->id) }}" id="rejectForm">
                                                     @csrf
                                                     @method('PUT')
-                                                    <button type="submit" class="reject-button ">
+                                                    <button type="submit" class="reject-button" onclick="confirmRejection(event)">
                                                         <i class="fa fa-times"></i>
                                                     </button>
                                                 </form>
@@ -202,7 +203,7 @@
                                     <thead>
                                         <tr>
                                             <th><span>User</span></th>
-                                            <th><span>Created</span></th>
+                                            <th><span>Registration Date</span></th>
                                             <th class="text-center"><span>Status</span></th>
                                             <th><span>Email</span></th>
                                             <th>&nbsp;</th>
@@ -215,7 +216,7 @@
                                                 <img src="{{$student->ProfileImage ? asset('/profileImages/' .$student->ProfileImage) : asset('/images/no-image.jpg')}}" >
                                                 <a href="/students/{{$student['id']}}" class="user-link">{{$student['FullName']}}</a><span class="user-subhead">Student</span>
                                             </td>
-                                            <td>{{$student->DOB}}</td>
+                                            <td>{{ date('d-m-Y', strtotime($student->created_at)) }}</td>
                                             <td class="text-center">
                                                 <span class="label label-success">{{$student->Status}}</span>
                                             </td>
@@ -223,21 +224,7 @@
                                                 <a href="#"><span class="__cf_email__" data-cfemail="660b0f0a07260d13080f154805090b">[email&#160;protected]</span></a>
                                             </td>
                                             <td style="width: 20%;">
-                                                {{-- <a href="/students/{{$student['id']}}" class="table-link success">
-                                                    <span class="fa-stack">
-                                                        <i class="fa fa-square fa-stack-2x"></i>
-                                                        <i class="fa fa-check fa-stack-1x fa-inverse"></i>
-                                                    </span>
-                                                </a>
-                                                <form method="POST" action="/students/{{$student->id}}">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                <a href="javascript:void(0);" class="table-link danger" id="{{$student->id}}">
-                                                    <span class="fa-stack">
-                                                        <i class="fa fa-square fa-stack-2x"></i>
-                                                        <i class="fa fa-times fa-stack-1x fa-inverse"></i>
-                                                    </span>
-                                                </a> --}}
+
                                             </td>
                                         </tr>
                                     </tbody>
@@ -276,7 +263,7 @@
                                     <thead>
                                         <tr>
                                             <th><span>User</span></th>
-                                            <th><span>Created</span></th>
+                                            <th><span>Registration Date</span></th>
                                             <th class="text-center"><span>Status</span></th>
                                             <th><span>Email</span></th>
                                             <th>&nbsp;</th>
@@ -289,7 +276,7 @@
                                                 <img src="{{$student->ProfileImage ? asset('/profileImages/' .$student->ProfileImage) : asset('/images/no-image.jpg')}}" >
                                                 <a href="/students/{{$student['id']}}" class="user-link">{{$student['FullName']}}</a><span class="user-subhead">Student</span>
                                             </td>
-                                            <td>{{$student->DOB}}</td>
+                                            <td>{{ date('d-m-Y', strtotime($student->created_at)) }}</td>
                                             <td class="text-center">
                                                 <span class="label label-danger">{{$student->Status}}</span>
                                             </td>
@@ -298,20 +285,21 @@
                                             </td>
                                             <td style="width: 20%;">
                                                 <div class="button-container">
-                                                    <form method="POST" action="{{ route('students.approve', $student->id) }}">
+                                                    <<form method="POST" action="{{ route('students.approve', $student->id) }}" id="approveForm">
                                                         @csrf
                                                         @method('PUT')
-                                                        <button type="submit" class="approve-button">
+                                                        <button type="submit" class="approve-button" onclick="confirmApproval(event)">
                                                             <i class="fa fa-check"></i>
                                                         </button>
                                                     </form>
-                                                    <form method="POST" action="/students/{{$student->id}}">
+                                                    <form method="POST" action="/students/{{$student->id}}" id="deleteForm_{{$student->id}}">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" class="reject-button danger" id="{{$student->id}}">
+                                                        <button type="button" class="reject-button danger" onclick="confirmDeletion('{{$student->id}}')">
                                                             <i class="fa fa-trash"></i>
                                                         </button>
                                                     </form>
+                                                    
                                                 </div>
                                             </td>
                                         </tr>
@@ -366,13 +354,60 @@
             });
         </script>
         <script>
-            $('.danger').click(function(e){
-                e.preventDefault() // Don't post the form, unless confirmed
-                if (confirm('Are you sure to permenantly delete this student?')) {
-                    // Post the form
-                    $(e.target).closest('form').submit() // Post the surrounding form
-                }
-            });
+            function confirmApproval(event) {
+                event.preventDefault(); // Prevent form submission
+        
+                swal.fire({
+                    title: 'Are you sure?',
+                    text: "You want to approve this student.",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Yes, approve',
+                    cancelButtonText: 'Cancel',
+                    reverseButtons: true
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Submit the form
+                        document.getElementById('approveForm').submit();
+                    }
+                });
+            }
+        
+            function confirmRejection(event) {
+                event.preventDefault(); // Prevent form submission
+        
+                swal.fire({
+                    title: 'Are you sure?',
+                    text: "You want to reject this student.",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Yes, reject',
+                    cancelButtonText: 'Cancel',
+                    reverseButtons: true
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Submit the form
+                        document.getElementById('rejectForm').submit();
+                    }
+                });
+            }
+
+            function confirmDeletion(studentId) {
+                swal.fire({
+                    title: 'Are you sure?',
+                    text: "You want to delete this student.",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Yes, delete',
+                    cancelButtonText: 'Cancel',
+                    reverseButtons: true
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Submit the form
+                        document.getElementById('deleteForm_' + studentId).submit();
+                    }
+                });
+            }
         </script>
   <script>
     // Get tab elements

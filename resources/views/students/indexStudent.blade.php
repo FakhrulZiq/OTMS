@@ -126,36 +126,56 @@
                                     <td>
                                         <a href="#"><span class="__cf_email__" data-cfemail="660b0f0a07260d13080f154805090b">[email&#160;protected]</span></a>
                                     </td>
-                                    <td style="width: 20%;">
-                                        <form id="deleteForm_{{ $student->id }}" action="{{ route('students.destroy', $student->id) }}" method="POST" class="delete-form">
-                                            @csrf
-                                            @method('DELETE')
-                                            <a href="/students/{{$student['id']}}" class="table-link">
-                                                <span class="fa-stack">
-                                                    <i class="fa fa-square fa-stack-2x"></i>
-                                                    <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
-                                                </span>
-                                            </a>
-                                            <a style="color: #F29727" href="/students/{{$student['id']}}/edit" class="table-link">
-                                                <span class="fa-stack">
-                                                    <i class="fa fa-square fa-stack-2x"></i>
-                                                    <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
-                                                </span>
-                                            </a>
-                                            <a style="color: #419a49" href="/students/fee-payment/{{$student['id']}}" class="table-link">
-                                                <span class="fa-stack">
-                                                    <i class="fa fa-square fa-stack-2x"></i>
-                                                    <i class="fa fa-money fa-stack-1x fa-inverse"></i>
-                                                </span>
-                                            </a>
-                                            <a href="#" class="table-link danger deleteBtn" data-form-id="deleteForm_{{ $student->id }}">
-                                                <span class="fa-stack">
-                                                    <i class="fa fa-square fa-stack-2x"></i>
-                                                    <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
-                                                </span>
-                                            </a>
-                                        </form>
-                                    </td>
+                                    @if(auth()->user()->type === 'Headmaster' || auth()->user()->type === 'Staff')
+                                        <td style="width: 20%;">
+                                            <form id="deleteForm_{{ $student->id }}" action="{{ route('students.destroy', $student->id) }}" method="POST" class="delete-form">
+                                                @csrf
+                                                @method('DELETE')
+                                                <a href="/students/{{$student['id']}}" class="table-link">
+                                                    <span class="fa-stack">
+                                                        <i class="fa fa-square fa-stack-2x"></i>
+                                                        <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+                                                    </span>
+                                                </a>
+                                                <a style="color: #F29727" href="/students/{{$student['id']}}/edit" class="table-link">
+                                                    <span class="fa-stack">
+                                                        <i class="fa fa-square fa-stack-2x"></i>
+                                                        <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                                                    </span>
+                                                </a>
+                                                <a style="color: #419a49" href="/students/fee-payment/{{$student['id']}}" class="table-link">
+                                                    <span class="fa-stack">
+                                                        <i class="fa fa-square fa-stack-2x"></i>
+                                                        <i class="fa fa-money fa-stack-1x fa-inverse"></i>
+                                                    </span>
+                                                </a>
+                                                <a href="#" class="table-link danger deleteBtn" data-form-id="deleteForm_{{ $student->id }}">
+                                                    <span class="fa-stack">
+                                                        <i class="fa fa-square fa-stack-2x"></i>
+                                                        <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                                                    </span>
+                                                </a>
+                                            </form>
+                                    @elseif(auth()->user()->type === 'Teacher')
+                                        <td style="width: 20%;">
+                                            <form id="deleteForm_{{ $student->id }}" action="{{ route('students.destroy', $student->id) }}" method="POST" class="delete-form">
+                                                @csrf
+                                                @method('DELETE')
+                                                <a href="/students/{{$student['id']}}" class="table-link">
+                                                    <span class="fa-stack">
+                                                        <i class="fa fa-square fa-stack-2x"></i>
+                                                        <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+                                                    </span>
+                                                </a>
+                                                <a style="color: #F29727" href="/students/{{$student['id']}}/edit" class="table-link">
+                                                    <span class="fa-stack">
+                                                        <i class="fa fa-square fa-stack-2x"></i>
+                                                        <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                                                    </span>
+                                                </a>
+                                            </form>
+                                        </td>
+                                    @endif
                                 </tr>
                                 @endforeach
                             </tbody>

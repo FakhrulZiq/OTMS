@@ -69,7 +69,7 @@
                         </div>
                     </div>
                     <div class="py-2">
-                        <h5 class="font-size-15">Order Summary</h5>
+                        <h5 class="font-size-15">Invoice Summary</h5>
                         <div class="table-responsive">
                             <table class="table align-middle table-nowrap table-centered mb-0">
                                 <thead>
