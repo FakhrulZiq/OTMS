@@ -18,7 +18,7 @@
 	<link rel="stylesheet" type="text/css" href="{{asset('vendor/select2/select2.min.css')}}">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{asset('css/util.css')}}">
-	<link rel="stylesheet" type="text/css" href="public/css/main.css">
+	<link rel="stylesheet" type="text/css" href="https://github.com/FakhrulZiq/OTMS/blob/da38d73abd4d3724d65fa51438d060fd6c12ca88/public/css/main.css">
 <!--===============================================================================================-->
 </head>
 <body>
